@@ -36,6 +36,7 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
 
     private void Jump()
     {
+        _rb.linearVelocityY = 0;
         _rb.AddForceY(jumpForce, ForceMode2D.Impulse);
     }
 
