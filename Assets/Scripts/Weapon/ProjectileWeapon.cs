@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class ProjectileWeapoo : MonoBehaviour
+public class ProjectileWeapon : Weapon
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Projectile prefab;
+    [SerializeField] private Transform firePoint;
+    
+    
+    protected override void Attack()
     {
-        
+        Instantiate(prefab, firePoint.position, firePoint.rotation);
     }
+    
 }
