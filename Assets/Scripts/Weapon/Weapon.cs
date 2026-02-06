@@ -1,26 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public abstract class Weapon : MonoBehaviour
 {
     protected abstract void Attack();
-    [SerializeField] private float CooldownTime = 1;
+    [SerializeField] private float cooldownTime = 0.2f;
     Coroutine _cooldownCoroutine;
     Coroutine _attackCoroutine;
     private bool _isAttacking;
-    
-    
     
     
     public void StartAttacking()
     {
         _isAttacking = true;
         if (_attackCoroutine is null)
+        {
             _attackCoroutine = StartCoroutine(AttackLoop());
-        
-
-
+        }
     }
 
     public void StopAttacking()
@@ -48,7 +45,7 @@ public abstract class Weapon : MonoBehaviour
 
     private IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(CooldownTime);
+        yield return new WaitForSeconds(cooldownTime);
         _cooldownCoroutine = null;
     }
 

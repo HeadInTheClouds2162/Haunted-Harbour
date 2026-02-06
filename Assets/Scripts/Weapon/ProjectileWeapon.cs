@@ -9,7 +9,10 @@ public class ProjectileWeapon : Weapon
     
     protected override void Attack()
     {
-        Instantiate(prefab, firePoint.position, firePoint.rotation);
+        Projectile projectile = Instantiate(prefab, firePoint.position, firePoint.rotation);
+        
+        //TODO: Apply a direction manually.
+        projectile.Shoot();
     }
     
 }

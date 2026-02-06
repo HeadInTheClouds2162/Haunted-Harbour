@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 6614616929476823196}
   - component: {fileID: 111430417553519815}
   - component: {fileID: 5910308876467934447}
+  - component: {fileID: 4064406521301302839}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -205,6 +206,7 @@ Transform:
   m_Children:
   - {fileID: 801055270595007718}
   - {fileID: 963643380115697472}
+  - {fileID: 935954035148487378}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6272794654265451034
@@ -232,8 +234,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &2585791625002625810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,8 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4430152bc5585ec4a925684741505f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementComponent
-  moveSpeed: 5
-  maxSpeed: 5
+  moveSpeed: 80
+  maxSpeed: 80
   jumpForce: 10
 --- !u!114 &111430417553519815
 MonoBehaviour:
@@ -310,3 +312,73 @@ MonoBehaviour:
   foot: {fileID: 963643380115697472}
   radius: 0.1
   distance: 0.6
+--- !u!114 &4064406521301302839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298358239320488402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcfe4381aca8b746a8572bcd9b27c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponController
+  currentWeapon: {fileID: 4482919296192382430}
+--- !u!1001 &9036823075914267726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5055054865147247818}
+    m_Modifications:
+    - target: {fileID: 6345365840284760643, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+      propertyPath: m_Name
+      value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184187902892328604, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184187902892328604, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.12999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184187902892328604, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184187902892328604, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184187902892328604, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184187902892328604, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1168.277
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+--- !u!4 &935954035148487378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8184187902892328604, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+  m_PrefabInstance: {fileID: 9036823075914267726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4482919296192382430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4854803348599519632, guid: e235014ce801ead4392de1a6d0062885, type: 3}
+  m_PrefabInstance: {fileID: 9036823075914267726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c69fa18e8f9624e9ee058616c7fa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileWeapon
