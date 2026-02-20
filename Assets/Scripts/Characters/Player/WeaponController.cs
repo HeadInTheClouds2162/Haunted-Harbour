@@ -5,7 +5,11 @@ using UnityEngine.InputSystem;
 public class WeaponController : MonoBehaviour, IInputReceiver
 {
     [SerializeField] private Weapon currentWeapon;
+<<<<<<< HEAD
     [SerializeField] private Transform Hand;
+=======
+    [SerializeField] private Transform hand;
+>>>>>>> ee89f2fa45dad581eca9e1fb827298ca0ccaf19c
     public void BindControls(PlayerInput reference)
     {
         reference.actions["Shoot"].performed += Shoot;
@@ -30,6 +34,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
         reference.actions["MousePosition"].performed -= PointHandTarget;
     }
 
+<<<<<<< HEAD
     private void PointHandTarget(InputAction.CallbackContext obj)
     {
         Vector2 mousePosition = obj.ReadValue<Vector2>();
@@ -49,4 +54,21 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     
     
     
+=======
+    private void Test(InputAction.CallbackContext obj)
+    {
+        Vector2 mousePos =  obj.ReadValue<Vector2>();
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        float rise = mousePos.y - hand.position.y;
+        float run =  mousePos.x - hand.position.x;
+        float angle = Mathf.Atan(rise / run) *Mathf.Rad2Deg;
+        hand.transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+
+
+
+
+
+>>>>>>> ee89f2fa45dad581eca9e1fb827298ca0ccaf19c
 }

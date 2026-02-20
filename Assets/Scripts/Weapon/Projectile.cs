@@ -36,8 +36,8 @@ public class Projectile : MonoBehaviour
         if (other.rigidbody && other.rigidbody.TryGetComponent(out IDamagable damagable))
         {
             damagable.TakeDamage(damage);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 
     private void FixedUpdate()
