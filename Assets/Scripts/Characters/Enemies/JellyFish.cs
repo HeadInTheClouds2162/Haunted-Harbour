@@ -1,21 +1,22 @@
 using UnityEngine;
 
-public class JellyFish : MonoBehaviour, IDamagable
+public class JellyFish : Enemy
 {
-    [SerializeField] private float health;
-    
-    
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
 
-    private void Die()
+    protected override void Move()
     {
-        Destroy(gameObject);
+        rigidbody2D.AddForceX(speed * transform.localScale.x, ForceMode2D.Impulse);
+        float currentSpeed = Mathf.Abs(rigidbody2D.linearVelocityX);
+        if (currentSpeed > maxSpeed)
+            rigidbody2D.linearVelocityX = (currentSpeed / rigidbody2D.linearVelocityX) * maxSpeed;
+    public float timer =3f; 
+
+    void Update()
+    {
+        timer -= Time.deltaTime;
+            
     }
 }
+    
+    
+
