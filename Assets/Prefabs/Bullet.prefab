@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3893636585016153751}
   - component: {fileID: 7806101018490989827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2915823657665813771}
   - component: {fileID: 7939505125220818252}
   - component: {fileID: 718480295811689396}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,9 +199,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 2.5
   m_AngularDamping: 0.05
-  m_GravityScale: 0.1
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   damage: 1
   lifeTime: 5
-  initialSpeed: 50
+  initialSpeed: 30
   rotateWithVelocity: 1
 --- !u!1 &2378275926622136395
 GameObject:
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 426117852877938799}
   - component: {fileID: 6826841409270322491}
   - component: {fileID: 4224862772313525229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile Appearance
   m_TagString: Untagged
   m_Icon: {fileID: 0}

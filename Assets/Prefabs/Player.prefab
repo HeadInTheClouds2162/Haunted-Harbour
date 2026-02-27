@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponController
   currentWeapon: {fileID: 4482919296192382430}
+  hand: {fileID: 7948199564930786455}
 --- !u!1001 &9036823075914267726
 PrefabInstance:
   m_ObjectHideFlags: 0

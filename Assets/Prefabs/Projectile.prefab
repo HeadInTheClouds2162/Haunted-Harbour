@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4133234141393938132}
   - component: {fileID: 1151218417470439507}
   - component: {fileID: 1185216833224731359}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Appearance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 6068599776099724104}
   - component: {fileID: 7617788753862437002}
   - component: {fileID: 6282641679447465903}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ef723607f03844b8174621ff1e3763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  rb: {fileID: 7617788753862437002}
+  damage: 1
+  lifeTime: 5
+  initialSpeed: 50
+  rotateWithVelocity: 1
 --- !u!1 &8001972431734238448
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2300326591730800695}
   - component: {fileID: 9026895701459468772}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

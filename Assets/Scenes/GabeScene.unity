@@ -373,30 +373,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &806793716 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7298358239320488402, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
-  m_PrefabInstance: {fileID: 4463114178162315196}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &806793722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5055054865147247818, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
   m_PrefabInstance: {fileID: 4463114178162315196}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &806793723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806793716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfcfe4381aca8b746a8572bcd9b27c53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WeaponController
-  currentWeapon: {fileID: 0}
-  hand: {fileID: 0}
 --- !u!1 &1049629773
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +593,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.02, y: -4.3, z: -0.0000000026744063}
-  m_LocalScale: {x: 18.240372, y: 1.1437799, z: 1.0486}
+  m_LocalScale: {x: 100, y: 1.1437799, z: 1.0486}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -865,10 +846,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7298358239320488402, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 806793723}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
 --- !u!1001 &6829919531050108534
 PrefabInstance:

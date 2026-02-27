@@ -139,3 +139,5 @@ MonoBehaviour:
   cooldownTime: 0.2
   prefab: {fileID: 718480295811689396, guid: 75ce971c2d8986149b1a553f548fc02c, type: 3}
   firePoint: {fileID: 210550987285910617}
+  numProjectiles: 3
+  inaccuracyInDegrees: 5
