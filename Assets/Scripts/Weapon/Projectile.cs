@@ -35,7 +35,8 @@ public class Projectile : MonoBehaviour
     {
         if (other.rigidbody && other.rigidbody.TryGetComponent(out IDamagable damagable))
         {
-            damagable.TakeDamage(damage);
+            ContactPoint2D col = other.contacts[0];
+            damagable.TakeDamage(damage, col.normal, col.point);
         }
         Destroy(gameObject);
     }

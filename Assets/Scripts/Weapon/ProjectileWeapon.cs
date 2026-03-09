@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,22 +8,32 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private Projectile prefab;
     [SerializeField] private Transform firePoint;
     [SerializeField, Min(1)] private int numProjectiles = 4; // We can use the min tag to make sure there's always atleast 1 projectile
+    [SerializeField] private float recoil = 0.1f;
     [SerializeField, Range(0,90)] private float inaccuracyInDegrees = 15; //<< We can use the Range tag to make this a slider
     
+    private CinemachineImpulseSource _recoil;
+
+    private void Awake()
+    {
+        _recoil = GetComponent<CinemachineImpulseSource>();
+    }
+
     protected override void Attack()
     {
         //OLD
         //Projectile projectile = Instantiate(prefab, firePoint.position, firePoint.rotation);
         //projectile.Shoot();
-        
+        Vector3 rot = firePoint.rotation.eulerAngles;
         //NEW
         for (int i = 0; i < numProjectiles; i++)
         {
-            Vector3 rotation = firePoint.rotation.eulerAngles;
+            Vector3 rotation = rot;
             rotation.z += Random.Range(-inaccuracyInDegrees, inaccuracyInDegrees);
             Projectile projectile = Instantiate(prefab, firePoint.position, Quaternion.Euler(rotation));
             projectile.Shoot();
         }
+        float rads = Mathf.Deg2Rad * rot.z;
+        _recoil.GenerateImpulseWithVelocity(new Vector3(Mathf.Cos(rads), Mathf.Sin(rads), 0) * recoil);
     }
 
     // Use AI to generate OnDrawGizmos, it's easy and usually a good result.
