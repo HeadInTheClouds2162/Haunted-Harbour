@@ -5,33 +5,32 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 { 
-    [SerializeField] private float damage = 1;
-    [SerializeField] private float lifeTime = 5;
-    [SerializeField] private float initialSpeed = 50;
+    [SerializeField] protected float damage = 1;
+    [SerializeField] protected float lifeTime = 5;
+    [SerializeField] protected float initialSpeed = 50;
 
-    [SerializeField] private bool rotateWithVelocity  = true;
+    [SerializeField] protected bool rotateWithVelocity  = true;
     
-    private Rigidbody2D _rb;
+    protected Rigidbody2D _rb;
 
     
-    private void Awake()
+    protected virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
 
     }
     public void Shoot()
     {
-        _rb.AddForce(transform.right * initialSpeed, ForceMode2D.Impulse);
-        Destroy(gameObject, lifeTime);
+        Shoot(transform.right);
     }
  
-    public void Shoot(Vector2 direction)
+    public virtual void Shoot(Vector2 direction)
     {
         _rb.AddForce(direction * initialSpeed, ForceMode2D.Impulse);
         Destroy(gameObject, lifeTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    protected virtual void OnCollisionEnter2D(Collision2D other)
     {
         if (other.rigidbody && other.rigidbody.TryGetComponent(out IDamagable damagable))
         {
@@ -41,7 +40,7 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if(rotateWithVelocity) transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(_rb.linearVelocityY, _rb.linearVelocityX) * Mathf.Rad2Deg);
     }

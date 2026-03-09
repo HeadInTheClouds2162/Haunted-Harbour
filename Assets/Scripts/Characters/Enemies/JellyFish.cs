@@ -1,27 +1,40 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class JellyFish : Enemy
 {
-    [SerializeField] Transform player;
-    [SerializeField] float burstInterval = 3f;
-    private float timer;
+    private Transform _player;
+    [SerializeField] float minBurstTime = 1f;
+    [SerializeField] float maxBurstTime = 7f;
+    
+    [SerializeField] private float rotationSpeed = 2f;
+    private float _timer;
 
     private void Start()
     {
-        timer = burstInterval;
+        _timer = Random.Range(minBurstTime, maxBurstTime);
     }
 
     protected override void Move()
     {
-        if (player == null) return;
+        if (_player == null) return;
 
-        timer -= Time.deltaTime;
+        
+        Vector2 dir = (_player.position - transform.position);
+        float dt = Time.deltaTime;
+        
+        float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+        
+        _timer -= dt;
 
-        if (timer <= 0f)
+        if (_timer <= 0f)
         {
             // Burst toward player
-            Vector2 dir = (player.position - transform.position).normalized;
-            rigidbody2D.AddForce(dir * speed, ForceMode2D.Impulse);
+          
+            rigidbody2D.AddForce(transform.right * speed, ForceMode2D.Impulse);
 
             // Clamp speed
             float currentSpeed = rigidbody2D.linearVelocity.magnitude;
@@ -31,7 +44,13 @@ public class JellyFish : Enemy
             }
 
             // Reset timer
-            timer = burstInterval;
+            _timer = Random.Range(minBurstTime, maxBurstTime);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.attachedRigidbody && other.attachedRigidbody.TryGetComponent(out Player target))
+         _player = target.transform;
     }
 }
