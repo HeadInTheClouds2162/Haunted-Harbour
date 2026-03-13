@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
   m_Name: BigCoin
   m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites: []
+  m_AnimatedSprites:
+  - {fileID: 6352595895586205592, guid: 9bd08200daba1544b91c3535985770ea, type: 3}
+  - {fileID: -7137675019307091914, guid: 9bd08200daba1544b91c3535985770ea, type: 3}
+  - {fileID: 30260314188516088, guid: 9bd08200daba1544b91c3535985770ea, type: 3}
+  - {fileID: -5492571664736972570, guid: 9bd08200daba1544b91c3535985770ea, type: 3}
+  - {fileID: 2582427519927352998, guid: 9bd08200daba1544b91c3535985770ea, type: 3}
+  - {fileID: -3132337949599265073, guid: 9bd08200daba1544b91c3535985770ea, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
