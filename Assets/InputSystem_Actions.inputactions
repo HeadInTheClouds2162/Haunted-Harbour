@@ -55,19 +55,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "b1c876ac-eeda-4131-ad80-f93931f7f923",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5fb23428-9124-4217-9abc-99ff94e9ab4a",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
