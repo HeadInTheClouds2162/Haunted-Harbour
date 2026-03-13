@@ -141,7 +141,8 @@ MonoBehaviour:
   prefab: {fileID: 62797922894755691, guid: 5db7149a66525b445bda3f2d2bda0f3f, type: 3}
   firePoint: {fileID: 8041084135985486351}
   numProjectiles: 1
-  inaccuracyInDegrees: 20
+  recoil: 0.1
+  inaccuracyInDegrees: 18.8
 --- !u!114 &4627741235780440877
 MonoBehaviour:
   m_ObjectHideFlags: 0
