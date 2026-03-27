@@ -7,8 +7,9 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;
-
-
+    [SerializeField] public float MaxJump;
+    private int NumJump;
+    
     private GroundController _onGround;
     private Rigidbody2D _rb;
     private float _currentMoveDirection;
@@ -19,6 +20,7 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
         _rb =  GetComponent<Rigidbody2D>();
         _onGround = GetComponent<GroundController>();
     }
+    
 
     public void BindControls(PlayerInput reference)
     {
@@ -38,13 +40,51 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     {
         _rb.linearVelocityY = 0;
         _rb.AddForceY(jumpForce, ForceMode2D.Impulse);
+        
     }
-
+    
     private void TryJump(InputAction.CallbackContext _)
     {
-        if(CanJump() ) Jump();
-    }
+        //if (NumJump == 0)
+        // {
+            // if (CanJump() == true)
+            // {
+                //Jump();
+                //NumJump += 1;
+                // }
+                // } 
 
+        //if (NumJump <= MaxJump)
+        // {
+            // Jump();
+            // NumJump = 0;
+            // }
+            
+            if (CanJump() && NumJump == 0)
+            {
+                Jump();
+                NumJump++;
+                return;
+            }
+            
+            if (NumJump < MaxJump)
+            {
+                Jump();
+                NumJump++;
+                
+            }
+
+            if (NumJump == MaxJump)
+            {
+                if (CanJump())
+                {
+                    NumJump = 0;
+                }
+            }
+    
+    }
+   
+    
     private bool CanJump()
     {
         return _onGround.IsGrounded();
