@@ -1,41 +1,36 @@
 using UnityEngine;
 
-public class Pig : Weapon
+public class PigCannon : MonoBehaviour
 {
     public GameObject cannonballPrefab;
     public Transform firePoint;
-    public float fireForce = 10f;
-    public float fireInterval = 3f;
+    public float fireForce = 12f;
 
-    private float _timer;
+    private float fireTimer = 3f; // counts down from 3 seconds
 
-    private void Start()
+    private void Awake()
     {
-        FireCannonball();
-        _timer = fireInterval;
+        Fire();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _timer -= Time.deltaTime;
+        // countdown
+        fireTimer -= Time.fixedDeltaTime;
 
-        if (_timer <= 0f)
+        // if timer is done → fire
+        if (fireTimer <= 0f)
         {
-            _timer = fireInterval;
+            fireTimer = 3f; // reset timer
         }
     }
 
-    private void FireCannonball()
+    private void Fire()
     {
         GameObject ball = Instantiate(cannonballPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
 
+        // fire in the direction the cannon is facing
         rb.AddForce(firePoint.right * fireForce, ForceMode2D.Impulse);
     }
-
-    protected override void Attack()
-    {
-        
-    }
 }
-
