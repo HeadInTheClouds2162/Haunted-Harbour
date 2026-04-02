@@ -309,9 +309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4430152bc5585ec4a925684741505f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementComponent
-  moveSpeed: 80
-  maxSpeed: 80
-  jumpForce: 10
+  moveSpeed: 5
+  maxSpeed: 5
+  jumpForce: 5
+  MaxJump: 2
 --- !u!114 &111430417553519815
 MonoBehaviour:
   m_ObjectHideFlags: 0
