@@ -5,30 +5,29 @@ public class WeaponController : MonoBehaviour, IInputReceiver
 {
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private Transform hand;
-    
-    private Camera _camera;
 
-    private void Start()
+    public void SetWeapon(Weapon weapon)
     {
-        _camera = Camera.main; //<< this is called caching, Camera.main can be an expensive call.
+        currentWeapon.StopAttacking();
+        currentWeapon.gameObject.SetActive(false);
+        currentWeapon = weapon;
+        weapon.gameObject.SetActive(true);
     }
+    private Camera _camera;
+    
 
     public void BindControls(PlayerInput reference)
     {
         reference.actions["Shoot"].performed += Shoot;
         reference.actions["MousePosition"].performed += PointHandTarget;
+        _camera = Camera.main;
     }
 
     private void Shoot(InputAction.CallbackContext obj)
     {
         bool isShooting = obj.ReadValueAsButton();
-        if (!currentWeapon) return;
+        Shoot(isShooting);
         
-        if (isShooting)
-            currentWeapon.StartAttacking();
-        else
-            currentWeapon.StopAttacking();
-            
     }
 
     public void UnbindControls(PlayerInput reference)
@@ -41,19 +40,25 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     {
         Vector2 mousePosition = obj.ReadValue<Vector2>();
         mousePosition = _camera.ScreenToWorldPoint(mousePosition);
-        float rise =  mousePosition.y - hand.position.y;
-        float run = mousePosition.x - hand.position.x;
+        PointHandTarget(mousePosition);
+    }
+
+    public void Shoot(bool state)
+    {
+        if (!currentWeapon) return;
+        if (state)
+            currentWeapon.StartAttacking();
+        else
+            currentWeapon.StopAttacking();
+    }
+
+    public void PointHandTarget(Vector2 state)
+    {
+        float rise =  state.y - hand.position.y;
+        float run = state.x - hand.position.x;
         float angle = Mathf.Atan2(rise, run) * Mathf.Rad2Deg;
         hand.rotation = Quaternion.Euler(0, 0, angle);
     }
-    
-    
-    
-    
-    
-    
-        
-    
-    
-    
-}
+    }
+
+

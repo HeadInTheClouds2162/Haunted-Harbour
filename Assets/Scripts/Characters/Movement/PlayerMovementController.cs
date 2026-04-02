@@ -7,7 +7,7 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;
-    [SerializeField] public float MaxJump;
+    [SerializeField] public int MaxJump;
     private int NumJump;
     
     private GroundController _onGround;
