@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,13 @@ public class WeaponController : MonoBehaviour, IInputReceiver
 {
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private Transform hand;
+
+    private Player player;
+
+    private void Awake()
+    {
+        player =  GetComponent<Player>();
+    }
 
     public void SetWeapon(Weapon weapon)
     {
@@ -41,6 +49,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
         Vector2 mousePosition = obj.ReadValue<Vector2>();
         mousePosition = _camera.ScreenToWorldPoint(mousePosition);
         PointHandTarget(mousePosition);
+        player.SetLookDirection( (mousePosition.x <= transform.position.x));
     }
 
     public void Shoot(bool state)
