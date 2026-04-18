@@ -14,7 +14,7 @@ public class SoundTrigger : MonoBehaviour
     }
 
     // Called when the Player enters the trigger area
-    void OnTriggerEnter2D(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the entering object is the Player and if the sound hasn't played yet
         if (other.CompareTag("Player") && !hasPlayed)
@@ -25,7 +25,7 @@ public class SoundTrigger : MonoBehaviour
     }
     
     // Optional: Use this to reset the sound if the player exits and re-enters
-    void OnTriggerExit2D(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {

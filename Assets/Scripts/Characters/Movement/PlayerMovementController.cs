@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
 {
+    
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;
@@ -13,12 +14,18 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     private GroundController _onGround;
     private Rigidbody2D _rb;
     private float _currentMoveDirection;
+    private Animator _animator;
+    
+    
 
     //TEMPORARY VARIABLES?
     private void Awake()
     {
         _rb =  GetComponent<Rigidbody2D>();
         _onGround = GetComponent<GroundController>();
+        _animator = GetComponentInChildren<Animator>();
+        
+        _animator.SetBool(IsAlive, true);
     }
     
 
@@ -94,6 +101,7 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     private void FixedUpdate()
     {
         Move();
+        
     }
 
     private void Move()
@@ -104,7 +112,20 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     private void SetMoveDirection(InputAction.CallbackContext obj)
     {
         _currentMoveDirection = obj.ReadValue<float>();
+        
     }
+    private static readonly int MovementX = Animator.StringToHash("MovementX");
+    private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
+    private static readonly int IsAlive = Animator.StringToHash("IsAlive");
+
+    private void Update()
+    {
+        _animator.SetFloat(MovementX, _rb.linearVelocityX);
+        _animator.SetBool(IsGrounded, _onGround.IsGrounded());
+        
+    }
+    
+    
 
     
 
