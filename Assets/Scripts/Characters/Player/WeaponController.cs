@@ -47,7 +47,6 @@ public class WeaponController : MonoBehaviour, IInputReceiver
         Vector2 mousePosition = obj.ReadValue<Vector2>();
         mousePosition = _camera.ScreenToWorldPoint(mousePosition);
         PointHandTarget(mousePosition);
-        Debug.Log($"{mousePosition.x} <= {transform.position.x}");
         player.SetlookDirection( mousePosition.x <= transform.position.x);
     }
 
