@@ -328,9 +328,9 @@ MonoBehaviour:
   action: {fileID: 2585791625002625810}
   hurtSoundEffect: {fileID: 6418180475301049370, guid: 76cd6e981fa5a0648af126bf3b0a37fd, type: 2}
   deathSoundEffect: {fileID: 0}
-  maxHealth: 100
+  _health: 100
   audioSource: {fileID: 0}
-  lookDirectionStartRight: 1
+  lookDirectionStartRight: 0
   flipTransform: {fileID: 801055270595007718}
 --- !u!114 &5910308876467934447
 MonoBehaviour:
