@@ -11,14 +11,14 @@ public class Player : MonoBehaviour, IDamagable
     private IInputReceiver[] _receiver;
     [SerializeField] private AudioResource hurtSoundEffect;
     [SerializeField] private AudioResource deathSoundEffect;
-    [SerializeField] private float maxHealth = 100;
-    private float health;
+    [SerializeField] private float _health = 100;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource2;
     public void SetlookDirection(bool faceRight)
     
     {
         
-      transform.localScale = new Vector3(faceRight ? -1 : 1, 1, 1);
+      transform.localScale = new Vector3((float)(faceRight ? -0.5 : 0.5), (float)0.5, (float)0.5);
       
     }
     
@@ -43,4 +43,15 @@ public class Player : MonoBehaviour, IDamagable
         audioSource.resource = hurtSoundEffect;
         audioSource.Play();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Spike"))
+        {
+            _health -= 10;
+            audioSource.resource = hurtSoundEffect;
+            audioSource.Play();
+
+        }
+    }
+
 }

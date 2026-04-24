@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Spike Run</title>
+	</head>
+	<body>
+	<canvas id="c" width="640" height="480" style="background-color: lightblue"></canvas><br>
+	<script>
+	  /*
+	  Code is under MIT license
+	  and stands to be cleaned
+	  */
+		var c = document.getElementById("c");
+		var ctx = c.getContext("2d");
+		var py = 325;
+		var ex = 640;
+		var e2x = 840;
+		var inMenu = true;
+		var muted = false;
+		var playing = false;
+		var inShop = false;
+		var score = 0;
+		var jumpable = true;
+		var speed = 13;
+		var espeed = 7;
+		var sunX = 640;
+		var hat1ownd = localStorage.getItem("hat1ownd");
+		if(hat1ownd == null || hat1ownd == "null"){
+		  hat1ownd = false;
+		}
+        var hat2ownd = localStorage.getItem("hat2ownd");
+		if(hat2ownd == null || hat2ownd == "null"){
+		  hat2ownd = false;
+		}
+		var player = new Image();
+		player.src = "resources/char1.png";
+		var otherSrc = "resources/char2.png";
+		var playerSrc = "resources/char1.png";
+		var enemies = new Image();
+		enemies.src = "resources/spike.png";
+		var coinImg = new Image();
+		coinImg.src = "resources/coin.png";
+		var hat = new Image();
+		hat.src = "resources/hat.png";
+        var mageHat = new Image();
+        mageHat.src = "resources/MagicHat1.png";
+		var multiplier = 1;
+		var objectives = [500000000, 1500000000000000, 300000000000000000, 600000000000000000];
+		var objectivesProgress = [false, false, false, false];
+		var objectivesMax = [10, 20, 10, 20];
+		var slot1;
+		var slot2;
+		var slot3;
+		var scene = "menu";
+		var mouseX;
+		var mouseY;
+		var hatSlctd = 0;
+		var coinX = 850;
+		var lives = 1;
+		var lifeX = null;
+        var exists = false;
+        var scorePowerUp = new powerUp(200, c.width * Math.round((Math.random() * 15) + 5), "resources/score.png", function(){score += 500});
+        scorePowerUp.update();
+		var coins = parseInt(localStorage.getItem("coins"));
+		if(coins == null || coins == "null" || isNaN(coins)){
+			coins = 0;
+		}
+		var music = new Audio();
+		var xp = parseInt(localStorage.getItem("xp"));
+		if(xp == null || xp == "null" || isNaN(xp)){
+			xp = 0;
+		}
+		var required = parseInt(localStorage.getItem("required"));
+		if(required == null || required == "null" || isNaN(required)){
+			required = 200;
+		}
+		var lvl = parseInt(localStorage.getItem("lvl"));
+		if(lvl == null || lvl == "null" || isNaN(lvl)){
+			lvl = 1;
+		}
+		music.src = "resources/spikeruntheme.mp3";
+    //End of variables
+    function collisionDetect(x1, y1, w1, h1, x2, y2, w2, h2){
+        if (x1 + w1 >= x2 && x1 + w1 <= x2 + w2 && y1 + h1 >= y2 && y1 + h1 <= y2 + h2) {
+            return true;
+        } else if (x1 >= x2 && x1 <= x2 + w2 && y1 >= y2 && y1 <= y2 + h2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function powerUp(x, newX, img, effect){
+        this.x = x;
+        this.y = 317;
+        this.newX = newX;
+        this.sprite = new Image();
+        this.sprite.src = img;
+        this.effect = effect;
+        this.render = function(){
+            ctx.drawImage(this.sprite, this.x, this.y, 25, 25); 
+        }
+        this.detectCollisions = function(){
+            if(collisionDetect(this.x, this.y, 25, 25, 40, py-35, 48, 60)){
+                this.effect();
+                this.x = this.newX;
+            }
+        }
+        this.update = function(){
+            this.x -= espeed;
+            this.render();
+            this.detectCollisions();
+            if(this.x < 0){
+                this.x = newX;
+            }
+            //window.setTimeout("this.update()", 50);
+        }
+    }
+    function createExtraLife(x){
+      lifeX = x;
+      exists = true;
+    }
+    var drawLife = function(){
+      let img = new Image();
+      img.src = "resources/life.png";
+      if(exists)
+        ctx.drawImage(img, lifeX, 317, 25, 25);
+    }
+    
+    var checkCollideLife = function(){
+      if(exists && lifeX>45 && lifeX<45+48 && py >= 317){
+        lives++;
+        exists = false;
+        createExtraLife(Math.random() * 15000);
+      }
+    }
+    
+		let jumpFunc = () => {
+			if(py < 325){
+				py -= speed;
+				speed --;
+				window.setTimeout("jumpFunc()", 25);
+			} else if(py >= 325){
+				jumpable = true;
+				speed = 13;
+				py = 325;
+			}
+		}
+
+		let jump = () => {
+			if(jumpable){
+			  if(muted == false){
+				  new Audio("resources/Jump.mp3").play();
+			  }
+				py --;
+				jumpFunc();
+			}
+		}
+    
+    function hatStore(page){
+      inShop = true;
+      scene = "store";
+      ctx.fillStyle = "lightblue";
+      ctx.fillRect(0, 0, c.width, c.height);
+      if(page == 1){
+        //None--deselect
+        ctx.fillStyle = "green";
+        ctx.fillRect(15, 15, 150, 100)
+        ctx.fillStyle = "white";
+        ctx.font = "25px Arial";
+        ctx.fillText("None", 25, 35);
+        //Base hat
+        ctx.fillStyle = "green";
+        ctx.fillRect(180, 15, 150, 100)
+        ctx.fillStyle = "white";
+        ctx.font = "18px Arial";
+        //ctx.fillText("Base hat", 190, 35);
+        ctx.drawImage(hat, 185, 20, 80, 70);
+        if(hat1ownd == false){
+          ctx.fillText("Buy 25 coins", 190, 95);
+        }
+        else{
+          ctx.fillText("Click here to", 190, 85);
+          ctx.fillText("select", 190, 95+10);
+        }
+        //Mage hat
+        ctx.fillStyle = "green";
+        ctx.fillRect(15, 115+15, 150, 100)
+        ctx.fillStyle = "white";
+        ctx.font = "18px Arial";
+        //ctx.fillText("Base hat", 190, 35);
+        ctx.drawImage(mageHat, 20, 135, 80, 70);
+        if(hat2ownd == false){
+          ctx.fillText("Buy 20 coins", 25, 195+15);
+        }
+        else{
+          ctx.fillText("Click here to", 25, 200);
+          ctx.fillText("select", 25, 195+25);
+        }
+        //Back button
+        ctx.fillStyle = "green";
+        ctx.fillRect(15, c.height - 50, 65, 35)
+        ctx.fillStyle = "white";
+        ctx.font = "25px Arial";
+        ctx.fillText("Back", 20, c.height - 25);
+      }
+      //window.setTimeout("hatStore()")
+    }
+
+		let changeSrc = (src) => {
+			if(src == otherSrc){
+				player.src = playerSrc;
+				window.setTimeout("changeSrc(playerSrc)", 350);
+			} else{
+				player.src = otherSrc; 
+				window.setTimeout("changeSrc(otherSrc)", 350);
+			}
+		}
+        
+        function render(){
+            ctx.clearRect(0, 0, 640, 480);
+			drawLife();
+            //scorePowerUp.render();
+            ctx.fillStyle = "white";
+			ctx.font = "28px Arial";
+			ctx.fillText(`${lives} Lives`, 10, 120);
+			ctx.fillText(score, 10, 30);
+			ctx.fillText(coins, 43, 60);
+			ctx.fillText(`Level ${lvl}`, 10, 90);
+			ctx.fillStyle = "yellow";
+			ctx.drawImage(coinImg, coinX, 317, 25, 25);
+			ctx.drawImage(coinImg, 10, 38, 25, 25);
+			ctx.beginPath();
+			ctx.arc(sunX, 75, 50, 0, Math.PI*2, true);
+			ctx.fill();
+			ctx.fillStyle = "green";
+			ctx.fillRect(0, 350, 640, 15);
+			ctx.fillStyle = "rgb(71, 26, 26)";
+			ctx.fillRect(0, 365, 640, 275);
+			ctx.fillStyle = "yellow";
+			ctx.drawImage(player, 40, py - 35 , 48, 60);
+			if(hatSlctd == 1){
+			  ctx.drawImage(hat, 60, py-39, 29, 24);
+			} else if(hatSlctd == 2){
+			  ctx.drawImage(mageHat, 62, py-41, 25, 20);
+			} else if(hatSlctd == 0){
+			  hatSlctd = 0;
+			}
+			ctx.fillStyle = "red";
+			ctx.drawImage(enemies, ex, 325, 25, 25);
+			ctx.drawImage(enemies, e2x, 325, 25, 25);
+        }
+        
+        function handleCollisions(){
+            checkCollideLife();
+            if(coinX < 73 && coinX + 25 > 50 && py > 300){
+				coins ++;
+				if(muted == false){
+				  new Audio("resources/Coin.mp3").play();
+				}
+				coinX = Math.floor(Math.random() * 640 + 860);
+			}
+			if(ex < 70 && ex + 25 > 50 && py > 300){
+			  lives--;
+			  ex = 700;
+			  if(lives <= 0){
+  			  if(muted == false){
+  				  new Audio("resources/Fail.mp3").play();
+  			  }
+  				if(coins < 15){
+  				  xp += score;
+  				}
+  				alert(`Game Over! Score: ${score}`);
+  				if(xp >= required){
+  					required += xp/2;
+  					lvl++;
+  					coins += 5;
+  				}
+  				localStorage.setItem("xp", xp);
+  				localStorage.setItem("required", required);
+  				localStorage.setItem("coins", coins);
+  				localStorage.setItem("lvl", lvl);
+  				if(coins >= 15){
+  					if(confirm("Buy an extra life for 15 coins?")){
+  						coins -= 15;
+  						lives++;
+  						ex = 700;
+  						e2x = 900;
+  					} else{
+  					    xp += score;
+  						playing = false;
+  						menu();
+  					} 
+  				} else{
+  					playing = false;
+  					menu();
+  				}
+			  }
+			}
+			if(e2x < 70 && e2x + 25 > 50 && py > 300){
+			  lives--;
+			  e2x = 700;
+			  if(lives <= 0){
+  			  if(muted == false){
+  				  new Audio("resources/Fail.mp3").play();
+  			  }
+  				alert(`Game Over! Score: ${score}`);
+  				if(coins < 15){
+  				  xp += score;
+  				}
+  				if(xp >= required){
+  					required += xp/2;
+  					lvl++;
+  					coins += 5;
+  				}
+  				localStorage.setItem("xp", xp);
+  				localStorage.setItem("required", required);
+  				localStorage.setItem("coins", coins);
+  				localStorage.setItem("lvl", lvl);
+  				if(coins >= 15){
+  					if(confirm("Buy an extra life for 15 coins?")){
+  					  lives++;
+  						coins -= 15;
+  						ex = 700;
+  						e2x = 900;
+  					} else {
+  					  xp += score;
+  						playing = false;
+  						menu();
+  					}
+  				} else{
+  					playing = false;
+  					menu();
+  				}
+			  }
+			}
+        }
+        
+        function update(){
+            if(coins > objectives[0] && objectivesProgress[0] == false){
+                alert("Objective complete!");
+                coins += objectivesMax[0];
+                objectivesProgress[0] = true;
+            }
+            if(coins > objectives[1] && objectivesProgress[1] == false){
+                alert("Objective complete!");
+                coins += objectivesMax[1];
+                objectivesProgress[1] = true;
+            }
+            if(score > objectives[2] && objectivesProgress[2] == false){
+                alert("Objective complete!");
+                coins += objectivesMax[2];
+                objectivesProgress[2] = true;
+            }
+            if(score > objectives[3] && objectivesProgress[3] == false){
+                alert("Objective complete!");
+                coins += objectivesMax[3];
+                objectivesProgress[3] = true;
+            }
+            scorePowerUp.update();
+            score += 1 * multiplier;
+            lifeX -= espeed;
+            ex -= espeed;
+			coinX -= espeed;
+			if(espeed > 5) e2x -= espeed;
+        }
+        
+		createExtraLife(2000);
+		let play = () => {
+		  //Play music
+		    if(muted == false){
+			    music.play();
+            }
+			scene = "play";
+			handleCollisions();
+            render();
+            update();
+			if(ex <= -25){
+				ex = Math.floor(Math.random() * 640 + 840);
+				sunX --;
+				if(espeed < 16){
+					espeed ++;
+				}
+			}
+			if(e2x <= -25){
+				e2x = Math.floor(Math.random() * 1040 + 840);
+			}
+			if(coinX < 0){
+				coinX = Math.floor(Math.random() * 640 + 860);
+			}
+			if(sunX < -125){
+				sunX = 640;
+			}
+			if(playing){
+				window.setTimeout("play()", 50);
+			}
+			if(py >= 325){
+				jumpable = true;
+				speed = 13;
+			} else{
+				jumpable = false;
+			}
+			window.addEventListener("keypress", jump, false);
+            window.addEventListener("touchstart", jump, false);
+		}
+
+		let menu = () => {
+		    inMenu = true;
+		    if(muted == false){
+			    music.play();
+		    }
+            /*if(coins > 50){
+                if(confirm("Rate the game on itch.io?")){
+                    window.location = "https://future-games.itch.io/spike-run/rate";
+                }
+            }*/
+			scene = "menu";
+			ctx.clearRect(0, 0, 640, 480);
+			ctx.fillStyle = "white";
+			ctx.font = "58px Arial";
+			ctx.fillText("Spike Run", 173, 130);
+			ctx.font = "28px Arial";
+			ctx.fillText(coins, 43, 35);
+			ctx.fillStyle = "rgb(38, 237, 88)";
+			ctx.fillRect(203, 170, 200, 50);
+			ctx.fillStyle = "white";
+			ctx.font = "28px Arial";
+			ctx.fillText("Play", 277, 205);
+			ctx.fillStyle = "rgb(38, 237, 88)";
+			ctx.fillRect(203, 230, 200, 50);
+			ctx.fillStyle = "white";
+			ctx.font = "28px Arial";
+			ctx.fillText(`Toggle sounds`, 217, 265);
+			//
+			ctx.fillStyle = "rgb(38, 237, 88)";
+			ctx.fillRect(203, 290, 200, 50);
+			ctx.fillStyle = "white";
+			ctx.font = "28px Arial";
+			ctx.fillText(`Hat shop`, 244, 265+60);
+			//
+            ctx.fillStyle = "rgb(38, 237, 88)";
+			ctx.fillRect(203, 350, 200, 50);
+			ctx.fillStyle = "white";
+			ctx.font = "28px Arial";
+			ctx.fillText(`More Games`, 219, 265+120);
+            ctx.font = "20px Arial";
+            ctx.fillText(`Follow us on itch.io for more content!`, 125, 450);
+			ctx.fillStyle = "yellow";
+			ctx.drawImage(coinImg, 10, 13, 25, 25);
+			if(playing){
+				play();
+				changeSrc(otherSrc);
+			} else if(inShop){
+				hatStore(1);
+			} else{
+			  window.setTimeout("menu()", 50);
+			}
+		}
+
+		let mousePos = (e) => {
+			mouseX = e.clientX;
+			mouseY = e.clientY;
+		}
+
+		let handleClicks = () => {
+		  if(scene == "store"){
+		    if(mouseX > 15 && mouseX < 165 && mouseY > 15 && mouseY < 115){
+		      hatSlctd = 0;
+		    }
+		    if(mouseX > 15 && mouseX < 100 && mouseY > c.height-50 && mouseY < c.height - 15){
+		      inShop = false;
+		      menu();
+		    }
+             //
+            if(mouseX > 15 && mouseX < 15+150 && mouseY > 130 && mouseY < 230 && !hat2ownd && coins >= 10){
+		      hat2ownd = true;
+		      hatStore(1);
+		      localStorage.setItem("hat2ownd", true);
+		      coins -= 10;
+		      localStorage.setItem("coins", coins);
+		    }
+            if(mouseX > 15 && mouseX < 15+150 && mouseY > 115 && mouseY < 230 && hat2ownd){
+		      hatSlctd = 2;
+		    }
+              //
+		    if(mouseX > 180 && mouseX < 180+150 && mouseY > 15 && mouseY < 115 && !hat1ownd && coins >= 15){
+		      hat1ownd = true;
+		      hatStore(1);
+		      localStorage.setItem("hat1ownd", true);
+		      coins -= 15;
+		      localStorage.setItem("coins", coins);
+		    }
+		    if(mouseX > 180 && mouseX < 180+150 && mouseY > 15 && mouseY < 115 && hat1ownd){
+		      hatSlctd = 1;
+		    }
+		  }
+			if(scene == "menu"){
+				if(mouseX > 203 && mouseX < 413 && mouseY > 170 && mouseY < 240){
+				    lives = 1;
+					playing = true;
+					ex = 700;
+					e2x = 900;
+					coinX = 670;
+					score = 0;
+					espeed = 5;
+				}
+				if(mouseX > 203 && mouseX < 413 && mouseY > 230 && mouseY < 300){
+					if(muted == false){
+					  muted = true;
+					  alert("Sounds will end after loop finish.");
+					  return;
+					} else{
+					  muted = false;
+					  return;
+					}
+				}
+				if(mouseX > 203 && mouseX < 413 && mouseY > 290 && mouseY < 340){
+					hatStore(1);
+					inShop = true;
+					//inMenu = false;
+				}
+                if(mouseX > 203 && mouseX < 413 && mouseY > 350 && mouseY < 410){
+                        window.location = "https://future-games.site/games";
+					//inMenu = false;
+				}
+			}
+		}
+
+		window.addEventListener("mousemove", mousePos, false);
+        window.addEventListener("touchmove", mousePos, false);
+		window.addEventListener("click", handleClicks, false);
+        window.addEventListener("keypress", handleClicks, false);
+		//theme();
+		menu();
+	</script>
+	</body>
+</html>

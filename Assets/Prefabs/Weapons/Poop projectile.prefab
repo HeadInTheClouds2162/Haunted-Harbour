@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poop projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 8310944365082602694, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.06414379
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310944365082602694, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.23338811
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310944365082602694, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3433962
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
