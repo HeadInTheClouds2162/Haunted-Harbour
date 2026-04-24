@@ -1,9 +1,6 @@
 using UnityEngine;
-
-using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour, IDamagable
 {
@@ -13,28 +10,46 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private AudioResource deathSoundEffect;
     [SerializeField] private float _health = 100;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioSource audioSource2;
+
+    [SerializeField] private bool lookDirectionStartRight = true;
+    [SerializeField] private Transform flipTransform;
+
+    
+    private bool isFacingright; 
+    
     public void SetlookDirection(bool faceRight)
-    
     {
+        if (isFacingright == faceRight) return;
+        isFacingright = faceRight;
+
+        Vector3 vec = flipTransform.localScale;
+        flipTransform.localScale = new Vector3((faceRight ^ lookDirectionStartRight) ? -Mathf.Abs(vec.x) : Mathf.Abs(vec.x), vec.y, vec.z);
         
-      transform.localScale = new Vector3((float)(faceRight ? -0.5 : 0.5), (float)0.5, (float)0.5);
-      
     }
-    
+
     private void Awake()
     {
         _receiver = GetComponentsInChildren < IInputReceiver >();
         foreach (IInputReceiver receiver in _receiver)
         {
             receiver.BindControls(action);
-            
         }
+        isFacingright = lookDirectionStartRight;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (flipTransform != null) return;
+        flipTransform = GetComponentInChildren<SpriteRenderer>().transform;
+        if (flipTransform == null) return;
+        Debug.LogWarning($"Auto assigned the flip transform to {flipTransform.name}", gameObject);
+    }
+
+
     private void OnDestroy()
     {
         foreach (IInputReceiver receiver in _receiver) 
-        receiver.UnbindControls(action);
+            receiver.UnbindControls(action);
     }
 
 

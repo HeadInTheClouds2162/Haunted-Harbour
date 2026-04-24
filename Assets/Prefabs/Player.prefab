@@ -309,8 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4430152bc5585ec4a925684741505f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementComponent
-  moveSpeed: 5
-  maxSpeed: 5
+  moveSpeed: 100
+  maxSpeed: 100
   jumpForce: 5
   MaxJump: 2
 --- !u!114 &111430417553519815
@@ -326,6 +326,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   action: {fileID: 2585791625002625810}
+  hurtSoundEffect: {fileID: 6418180475301049370, guid: 76cd6e981fa5a0648af126bf3b0a37fd, type: 2}
+  deathSoundEffect: {fileID: 0}
+  maxHealth: 100
+  audioSource: {fileID: 0}
+  lookDirectionStartRight: 1
+  flipTransform: {fileID: 801055270595007718}
 --- !u!114 &5910308876467934447
 MonoBehaviour:
   m_ObjectHideFlags: 0
