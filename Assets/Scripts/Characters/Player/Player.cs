@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -8,12 +9,24 @@ public class Player : MonoBehaviour, IDamagable
     private IInputReceiver[] _receiver;
     [SerializeField] private AudioResource hurtSoundEffect;
     [SerializeField] private AudioResource deathSoundEffect;
-    [SerializeField] private float _health = 100;
     [SerializeField] private AudioSource audioSource;
-
     [SerializeField] private bool lookDirectionStartRight = true;
     [SerializeField] private Transform flipTransform;
+    public Action OnHealthChanged { get; set; }
+    [field: SerializeField] public float MaxHealth { get; set; }
 
+    public float CurrentHealth
+    {
+        get => _healt;
+        set
+        {
+            _healt = Mathf.Clamp(value, 0, MaxHealth);
+            if (_healt <= 0) Die();
+            OnHealthChanged?.Invoke();
+        }
+    }
+    private float _healt;
+    
     
     private bool isFacingright; 
     
@@ -35,6 +48,7 @@ public class Player : MonoBehaviour, IDamagable
             receiver.BindControls(action);
         }
         isFacingright = lookDirectionStartRight;
+        CurrentHealth = MaxHealth;
     }
 
     private void OnDrawGizmosSelected()
@@ -55,18 +69,28 @@ public class Player : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage, Vector2 direction, Vector2 position)
     {
+        CurrentHealth -= damage;
         audioSource.resource = hurtSoundEffect;
         audioSource.Play();
     }
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Spike"))
         {
-            _health -= 10;
+            CurrentHealth -= 10;
             audioSource.resource = hurtSoundEffect;
             audioSource.Play();
 
         }
     }
 
+    private void Die()
+    {
+        audioSource.resource = hurtSoundEffect;
+        audioSource.Play();
+        Destroy(gameObject);
+    }
 }
