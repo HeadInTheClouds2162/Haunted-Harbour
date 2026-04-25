@@ -47,7 +47,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
         Vector2 mousePosition = obj.ReadValue<Vector2>();
         mousePosition = _camera.ScreenToWorldPoint(mousePosition);
         PointHandTarget(mousePosition);
-        player.SetlookDirection( (mousePosition.x <= transform.position.x));
+        player.SetlookDirection( mousePosition.x <= transform.position.x);
     }
 
     public void Shoot(bool state)
@@ -65,6 +65,12 @@ public class WeaponController : MonoBehaviour, IInputReceiver
         float run = state.x - hand.position.x;
         float angle = Mathf.Atan2(rise, run) * Mathf.Rad2Deg;
         hand.rotation = Quaternion.Euler(0, 0, angle);
+
+        int faceRight = 1;
+        
+        if(angle is > 90 or < -90) faceRight = -1;
+        
+        hand.transform.localScale = new Vector3(1, faceRight, 1);
     }
     
     

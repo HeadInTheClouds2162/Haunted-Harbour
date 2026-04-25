@@ -7,28 +7,37 @@ public class RoketExplode : MonoBehaviour
     public GameObject explosionEffect;
     public GameObject explosionEffect2;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip explosionSound;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Explode();
     }
 
-
     void Explode()
     {
+        // Spawn explosion effect
+        GameObject effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
-        if (explosionEffect != null)
+        // Play louder explosion sound (2f = twice as loud)
+        AudioSource audio = effect.GetComponent<AudioSource>();
+        if (audio != null && explosionSound != null)
         {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            audio.PlayOneShot(explosionSound, 3f);
+        }
+
+        // Optional second effect
+        if (explosionEffect2 != null)
+        {
             Instantiate(explosionEffect2, transform.position, Quaternion.identity);
         }
 
-
+        // Damage + force
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         foreach (Collider2D hit in hits)
         {
-
-
             var damageable = hit.GetComponent<IDamagable>();
 
             if (damageable != null)
@@ -38,20 +47,15 @@ public class RoketExplode : MonoBehaviour
 
                 damageable.TakeDamage(explosionDamage, direction, position);
             }
-            
+
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 Vector2 direction = (rb.position - (Vector2)transform.position).normalized;
                 rb.AddForce(direction * 700f);
             }
-
-
         }
-
 
         Destroy(gameObject);
     }
-    
-
 }

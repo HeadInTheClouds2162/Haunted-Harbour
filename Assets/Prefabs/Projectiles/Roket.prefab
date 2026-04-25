@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ef723607f03844b8174621ff1e3763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  damage: 300
+  damage: 50
   lifeTime: 10
   initialSpeed: 20
   rotateWithVelocity: 1
@@ -304,9 +304,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoketExplode
   explosionRadius: 3
-  explosionDamage: 500
+  explosionDamage: 50
   explosionEffect: {fileID: 6019479257577753058, guid: 83384eb84d65de648a79bc88e9dd27e8, type: 3}
   explosionEffect2: {fileID: 3586078270847807223, guid: 52318410e479de548983c39526ea7883, type: 3}
+  audioSource: {fileID: 3106268268967396743, guid: 83384eb84d65de648a79bc88e9dd27e8, type: 3}
+  explosionSound: {fileID: 8300000, guid: 28b8c500bb57f594ca9b6ace3491ee42, type: 3}
 --- !u!70 &-4381627102916896634
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
