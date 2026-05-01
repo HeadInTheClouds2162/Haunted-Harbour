@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 801055270595007718}
   - component: {fileID: 2973533925301312222}
   - component: {fileID: 2706057159871175381}
+  - component: {fileID: 4885230623800850983}
   m_Layer: 3
   m_Name: Appearance
   m_TagString: Untagged
@@ -169,6 +170,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.43, y: 0.39}
   m_EdgeRadius: 0
+--- !u!95 &4885230623800850983
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065079755411791609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c9dd69153de36204db2def511b90e667, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4981377945246114825
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,10 +351,10 @@ MonoBehaviour:
   action: {fileID: 2585791625002625810}
   hurtSoundEffect: {fileID: 6418180475301049370, guid: 76cd6e981fa5a0648af126bf3b0a37fd, type: 2}
   deathSoundEffect: {fileID: 0}
-  _health: 100
   audioSource: {fileID: 0}
   lookDirectionStartRight: 0
   flipTransform: {fileID: 801055270595007718}
+  <MaxHealth>k__BackingField: 100
 --- !u!114 &5910308876467934447
 MonoBehaviour:
   m_ObjectHideFlags: 0

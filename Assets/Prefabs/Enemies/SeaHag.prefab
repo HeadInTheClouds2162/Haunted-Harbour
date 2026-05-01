@@ -74,10 +74,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e8cd69959e71d488b08c99aafc6e86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeaHag
-  health: 10
   speed: 1
   maxSpeed: 3
   hurtParticles: {fileID: 0}
+  <MaxHealth>k__BackingField: 10
+  MaxTotalSecondsTouchedForDamage: 1
+  damage: 0
 --- !u!1 &4617409872759468863
 GameObject:
   m_ObjectHideFlags: 0
