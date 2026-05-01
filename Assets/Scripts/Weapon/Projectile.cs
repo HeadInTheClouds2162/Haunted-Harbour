@@ -19,14 +19,15 @@ public class Projectile : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
 
     }
-    public void Shoot()
+    public void Shoot(int layer)
     {
-        Shoot(transform.right);
+        Shoot(transform.right,layer );
     }
  
-    public virtual void Shoot(Vector2 direction)
+    public virtual void Shoot(Vector2 direction, int layer)
     {
         _rb.AddForce(direction * initialSpeed, ForceMode2D.Impulse);
+        _rb.excludeLayers = (1<< layer);
         Destroy(gameObject, lifeTime);
     }
 

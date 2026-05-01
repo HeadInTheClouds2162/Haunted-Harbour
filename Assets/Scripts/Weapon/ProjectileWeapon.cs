@@ -32,7 +32,7 @@ public class ProjectileWeapon : Weapon
             Vector3 rotation = rot;
             rotation.z += Random.Range(-inaccuracyInDegrees, inaccuracyInDegrees);
             Projectile projectile = Instantiate(prefab, firePoint.position, Quaternion.Euler(rotation));
-            projectile.Shoot();
+            projectile.Shoot(transform.root.gameObject.layer);
         }
 
         float rads = Mathf.Deg2Rad * rot.z;

@@ -1,32 +1,70 @@
 using System;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class EnemyHuman : Enemy
 {
     private delegate void DAiFunction();
-    
+    private Rigidbody2D _rb;
     private DAiFunction currentFunction;
     private EAiState currentState;
 
     private WeaponController weaponController;
-    
+    private float _timer;
     private Transform target;
-    
-    
+    private float Timetill;
+    [SerializeField] private float mindirectionchange = 0.4f;
+    [SerializeField] private float maxdirectionchange2 = 3f;
+    private int ChooseNewDirectionHave;
+    private float directionTimeChange;
+    private float currentTimeChange;
+    [SerializeField] float Speed;
+
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
+
     private void IdleState()
     {
+        ///Timetill = Random.Range (5,10);
+        ///  _timer  += Time.deltaTime;
+        /// if (_timer >= Timetill)
+        ///  {
+        ///     SetState(EAiState.Searching);
+        ///  }
+        currentTimeChange += Time.deltaTime;
+        if (currentTimeChange > maxdirectionchange2)
+        {
+            ChooseNewDirection();
+        }
         
+        _rb.AddForceX(ChooseNewDirectionHave * Speed);
     }
+
+    private void ChooseNewDirection()
+        {
+            currentTimeChange = 0;
+            directionTimeChange = Random.Range(mindirectionchange, maxdirectionchange2);
+            ChooseNewDirectionHave = Random.Range(-1, 2);
+
+
+
+        }
 
     private void SearchingState()
     {
         
     }
 
+    private WeaponController _weapon;
     private void AttackingState()
     {
-        
+        _weapon.Shoot(true);
     }
 
     private void FleeingState()
@@ -45,7 +83,7 @@ public class EnemyHuman : Enemy
 
     private void SetState(EAiState newState)
     {
-        if(currentState == EAiState.Attacking)
+        if(currentState != EAiState.Attacking)
             weaponController.Shoot(false);
         
         currentState = newState;
@@ -77,8 +115,10 @@ public class EnemyHuman : Enemy
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("I have spotted smth");
         if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent(out Player p))
         {
+            Debug.Log("I have spotted player");
             target = p.transform;
             SetState(EAiState.Attacking);
         }
