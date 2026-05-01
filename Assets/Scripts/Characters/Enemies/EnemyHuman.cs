@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 public class EnemyHuman : Enemy
 {
     private delegate void DAiFunction();
-    private Rigidbody2D _rb;
     private DAiFunction currentFunction;
     private EAiState currentState;
 
@@ -21,16 +20,7 @@ public class EnemyHuman : Enemy
     private int ChooseNewDirectionHave;
     private float directionTimeChange;
     private float currentTimeChange;
-    [SerializeField] float Speed;
 
-
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        weaponController = GetComponent<WeaponController>();
-
-        Weapon[] weapons = GetComponentsInChildren<Weapon>();
-    }
 
     private void IdleState()
     {
@@ -46,7 +36,7 @@ public class EnemyHuman : Enemy
             ChooseNewDirection();
         }
         
-        _rb.AddForceX(ChooseNewDirectionHave * Speed);
+        rigidbody2D.AddForceX(ChooseNewDirectionHave * directionTimeChange);
     }
 
     private void ChooseNewDirection()
@@ -64,10 +54,9 @@ public class EnemyHuman : Enemy
         
     }
 
-    private WeaponController _weapon;
     private void AttackingState()
     {
-        _weapon.PointHandTarget(target.position);
+        weaponController.PointHandTarget(target.position);
     }
 
     private void FleeingState()
