@@ -67,7 +67,7 @@ public class EnemyHuman : Enemy
     private WeaponController _weapon;
     private void AttackingState()
     {
-        _weapon.Shoot(true);
+        _weapon.PointHandTarget(target.position);
     }
 
     private void FleeingState()
@@ -77,10 +77,12 @@ public class EnemyHuman : Enemy
 
     private void Start()
     {
-        SetState(EAiState.Idle);
         weaponController = GetComponent<WeaponController>();
 
         Weapon[] weapons = GetComponentsInChildren<Weapon>();
+        
+        SetState(EAiState.Idle);
+        
         weaponController.SetWeapon(weapons[Random.Range(0, weapons.Length)]); //<< CHOOSE A RANDOM WEAPON
     }
 
