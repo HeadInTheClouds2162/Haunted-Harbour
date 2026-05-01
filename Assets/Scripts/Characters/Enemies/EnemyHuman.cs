@@ -27,6 +27,9 @@ public class EnemyHuman : Enemy
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        weaponController = GetComponent<WeaponController>();
+
+        Weapon[] weapons = GetComponentsInChildren<Weapon>();
     }
 
     private void IdleState()
