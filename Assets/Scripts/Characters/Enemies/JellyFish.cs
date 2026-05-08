@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class JellyFish : Enemy
 {
+    private static readonly int Hurt = Animator.StringToHash("Hurt");
     [SerializeField] float minBurstTime = 1f;
     [SerializeField] float maxBurstTime = 7f;
+    [SerializeField] private float damage = 3;
 
     [SerializeField] private float torqueStrength = 5f;
     private float _timer;
@@ -50,6 +53,20 @@ public class JellyFish : Enemy
             }
 
             _timer = Random.Range(minBurstTime, maxBurstTime);
+        }
+    }
+
+    public override void TakeDamage(float damage, Vector2 hitPoint, Vector2 hitNormal)
+    {
+        _animator.SetTrigger(Hurt);
+        base.TakeDamage(damage, hitNormal, hitPoint);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.rigidbody && other.rigidbody.TryGetComponent(out Player target))
+        {
+            target.TakeDamage(damage,rigidbody2D.linearVelocity, transform.position);
         }
     }
 }

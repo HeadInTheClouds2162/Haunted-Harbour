@@ -208,7 +208,7 @@ MonoBehaviour:
   LateralAdjustment: 0
   FovRange: {x: 1, y: 100}
   DollyRange: {x: -100, y: 100}
-  OrthoSizeRange: {x: 1, y: 1000}
+  OrthoSizeRange: {x: 5, y: 7}
 --- !u!1 &3859158381382771559
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 [SelectionBase]
 public class Enemy : MonoBehaviour, IDamagable
 {
+    private static readonly int MovementX = Animator.StringToHash("MovementX");
+    private static readonly int IsAlive = Animator.StringToHash("IsAlive");
     [SerializeField] protected float speed;
     [SerializeField] protected float maxSpeed;
     protected Animator _animator;
@@ -37,7 +39,7 @@ public class Enemy : MonoBehaviour, IDamagable
     protected virtual void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         CurrentHealth = MaxHealth;
 
      
@@ -52,7 +54,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    public void TakeDamage(float damage, Vector2 direction, Vector2 position)
+    public virtual void TakeDamage(float damage, Vector2 direction, Vector2 position)
     {
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
@@ -77,16 +79,22 @@ public class Enemy : MonoBehaviour, IDamagable
             hurtParticles.transform.SetParent(null);
             Destroy(hurtParticles.gameObject, hurtParticles.main.duration); // Destroy the particles after they're done playing
         }
-        Destroy(gameObject);
+
+        _animator.SetBool(IsAlive, false);
+        rigidbody2D.simulated = false;
+        Destroy(gameObject, 3);
     }
 
     protected virtual void Move()
     {
         bool lookDirection = _target ? transform.position.x < _target.position.x : rigidbody2D.linearVelocityX > 0;
-        SetlookDirection(lookDirection);    }
+        SetlookDirection(lookDirection);
+       
+    }
     
     private void FixedUpdate()
     {
+        _animator.SetFloat(MovementX, Mathf.Abs(rigidbody2D.linearVelocityX));
         if (cheatAlwaysSeekPlayer) _target = Player.playerTransform;
         Move();
 

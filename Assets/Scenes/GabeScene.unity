@@ -299,7 +299,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 3.6161165
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -324,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3019457, y: -1.2171059, z: -10}
+  m_LocalPosition: {x: -1.2149796, y: 0.1099987, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -754,13 +754,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   enemyPrefabs:
-  - {fileID: 3986765007892418365, guid: 9926be7854780cf479557bce620b3895, type: 3}
-  - {fileID: 7669902478771617409, guid: 93db8bfc5c27f8d469749b60292c6e05, type: 3}
+  - {fileID: 6834518590168316733, guid: 78e647d659fc41f419cf510bb7b72abe, type: 3}
   spawnRadius: 5
   minSpawnCount: 1
   maxSpawnCount: 3
-  minSpawnInterval: 4
-  maxSpawnInterval: 8
+  minSpawnInterval: 0.1
+  maxSpawnInterval: 0.5
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!4 &1408723481
 Transform:
@@ -771,7 +770,7 @@ Transform:
   m_GameObject: {fileID: 1408723479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 12.17, z: 0}
+  m_LocalPosition: {x: -8.84, y: 5.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1257,19 +1256,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 441649409518076116, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.85284853
+      value: -0.79847604
       objectReference: {fileID: 0}
     - target: {fileID: 441649409518076116, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.73229146
-      objectReference: {fileID: 0}
-    - target: {fileID: 1084858711693083957, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
-      propertyPath: OrthoSizeRange.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1084858711693083957, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
-      propertyPath: OrthoSizeRange.y
-      value: 7
+      value: -0.57786083
       objectReference: {fileID: 0}
     - target: {fileID: 5055054865147247818, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1313,11 +1304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5697661187429925656, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.85284853
+      value: -0.79847604
       objectReference: {fileID: 0}
     - target: {fileID: 5697661187429925656, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.73229146
+      value: -0.57786083
       objectReference: {fileID: 0}
     - target: {fileID: 7298358239320488402, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_Name

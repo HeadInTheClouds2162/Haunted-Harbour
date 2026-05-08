@@ -84,6 +84,7 @@ MonoBehaviour:
   MaxTotalSecondsTouchedForDamage: 0.1
   damage: 1
   bobHeight: 0.4
+  bobWidth: 0.4
 --- !u!1 &4617409872759468863
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +96,7 @@ GameObject:
   - component: {fileID: 3497557199492150478}
   - component: {fileID: 1985670589871780068}
   - component: {fileID: 8666436032855226085}
+  - component: {fileID: 7737434480268318543}
   m_Layer: 7
   m_Name: SeaHagImage
   m_TagString: Untagged
@@ -212,6 +214,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.12
+--- !u!95 &7737434480268318543
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617409872759468863}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e54395dab3775ea4aa99e2469b1fe0dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7615711108341318537
 PrefabInstance:
   m_ObjectHideFlags: 0

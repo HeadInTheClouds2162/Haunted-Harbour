@@ -8,6 +8,7 @@ public class SeaHag : Enemy
     [SerializeField] private float damage;
     [SerializeField] private float bobHeight = 0.4f;
     [SerializeField] private float bobWidth = 0.4f;
+    
     protected override void Move()
     {
 base.Move();
@@ -51,6 +52,5 @@ base.Move();
                 _timer = 0f;
             }
         }
-            
     }
 }
