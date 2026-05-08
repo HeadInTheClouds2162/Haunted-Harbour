@@ -12,11 +12,13 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected bool rotateWithVelocity  = true;
     
     protected Rigidbody2D _rb;
-
+    
+    private TrailRenderer _trailRenderer;
     
     protected virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _trailRenderer = GetComponentInChildren<TrailRenderer>();
 
     }
     public void Shoot(int layer)
@@ -28,6 +30,7 @@ public class Projectile : MonoBehaviour
     {
         _rb.AddForce(direction * initialSpeed, ForceMode2D.Impulse);
         _rb.excludeLayers = (1<< layer);
+        _rb.includeLayers = ~(1<< layer);
         Destroy(gameObject, lifeTime);
     }
 
@@ -38,6 +41,13 @@ public class Projectile : MonoBehaviour
             ContactPoint2D col = other.contacts[0];
             damagable.TakeDamage(damage, col.normal, col.point);
         }
+
+        if (_trailRenderer)
+        {
+            _trailRenderer.transform.SetParent(null);
+            _trailRenderer.autodestruct = true;
+        }
+
         Destroy(gameObject);
     }
 

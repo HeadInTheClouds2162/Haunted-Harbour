@@ -4,16 +4,23 @@ using UnityEngine;
 public class SeaHag : Enemy
 {
     [SerializeField] float MaxTotalSecondsTouchedForDamage = 1f;
-    private Transform _player;
     private float _timer;
     [SerializeField] private float damage;
-    
+    [SerializeField] private float bobHeight = 0.4f;
+    [SerializeField] private float bobWidth = 0.4f;
     protected override void Move()
     {
+base.Move();
+        if (_target == null)
+        {
+            rigidbody2D.MovePosition(new Vector2(Mathf.Cos(Time.time) * bobWidth, Mathf.Sin(Time.time) * bobHeight));
+            return;
+        }
         
-        if (_player == null) return;
-        Vector2 toSeahag = (_player.position-transform.position).normalized;
-        Vector2 playerForward = new Vector2(_player.localScale.x, 0).normalized;
+
+        Vector2 toSeahag = (_target.position-transform.position).normalized;
+        /*
+        Vector2 playerForward = new Vector2(_target.localScale.x, 0).normalized;
         float dot = Vector2.Dot(playerForward, toSeahag); //if from the seahag the player is looking at  us
 
         if (dot < 0f)
@@ -21,6 +28,7 @@ public class SeaHag : Enemy
             //rigidbody2D.linearVelocity = Vector2.zero;
             return;
         }
+        */
         
         rigidbody2D.AddForce(toSeahag * speed, ForceMode2D.Impulse);
         
@@ -30,12 +38,6 @@ public class SeaHag : Enemy
         }
         float dt = Time.deltaTime;
         _timer += dt;
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.attachedRigidbody && other.attachedRigidbody.TryGetComponent(out Player target))
-            _player = target.transform;
     }
 
     private void OnCollisionStay2D(Collision2D other)

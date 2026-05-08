@@ -13,14 +13,19 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private bool lookDirectionStartRight = true;
     [SerializeField] private Transform flipTransform;
     public Action OnHealthChanged { get; set; }
+    public Action OnDeath { get; set; }
     [field: SerializeField] public float MaxHealth { get; set; }
 
+    public static Transform playerTransform;
+
+    
     public float CurrentHealth
     {
         get => _healt;
         set
         {
             _healt = Mathf.Clamp(value, 0, MaxHealth);
+            Debug.Log("Player Health Changed: " + _healt);
             if (_healt <= 0) Die();
             OnHealthChanged?.Invoke();
         }
@@ -42,6 +47,7 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Awake()
     {
+
         _receiver = GetComponentsInChildren < IInputReceiver >();
         foreach (IInputReceiver receiver in _receiver)
         {
@@ -49,6 +55,9 @@ public class Player : MonoBehaviour, IDamagable
         }
         isFacingright = lookDirectionStartRight;
         CurrentHealth = MaxHealth;
+        
+        playerTransform = transform;
+        
     }
 
     private void OnDrawGizmosSelected()
@@ -69,6 +78,8 @@ public class Player : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage, Vector2 direction, Vector2 position)
     {
+        Debug.Log("Player Took Damage");
+        
         CurrentHealth -= damage;
         audioSource.resource = hurtSoundEffect;
         audioSource.Play();
@@ -91,6 +102,9 @@ public class Player : MonoBehaviour, IDamagable
     {
         audioSource.resource = hurtSoundEffect;
         audioSource.Play();
-        Destroy(gameObject);
+        foreach (IInputReceiver receiver in _receiver) 
+            receiver.UnbindControls(action);
+        OnDeath?.Invoke();
+        Destroy(gameObject, 5);
     }
 }
