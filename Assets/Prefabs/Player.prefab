@@ -857,7 +857,7 @@ MonoBehaviour:
   UpdateMethod: 2
   Targets:
   - Object: {fileID: 6003467015710487491}
-    Weight: 1.5
+    Weight: 1.7
     Radius: 0.15
   - Object: {fileID: 5055054865147247818}
     Weight: 1.6

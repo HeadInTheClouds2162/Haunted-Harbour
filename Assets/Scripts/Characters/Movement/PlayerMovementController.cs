@@ -81,7 +81,7 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     {
         _rb.linearVelocityY = 0;
         _rb.AddForceY(jumpForce, ForceMode2D.Impulse);
-        _animator.SetTrigger(JumpID);
+        if(!_onGround.IsGrounded()) _animator.SetTrigger(JumpID);
 
         
     }
