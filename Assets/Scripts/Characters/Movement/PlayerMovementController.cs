@@ -15,7 +15,37 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     private Rigidbody2D _rb;
     private float _currentMoveDirection;
     private Animator _animator;
+
+    [SerializeField] private float groundFriction = 2;
+    [SerializeField] private float airFriction = 0;
+
+    [SerializeField] private bool useAnimation = false;
     
+    private static readonly int MovementX = Animator.StringToHash("MovementX");
+    private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
+    private static readonly int IsAlive = Animator.StringToHash("IsAlive");
+    private static readonly int JumpID = Animator.StringToHash("Jump");
+
+    
+    private void OnEnable()
+    {
+        _onGround ??= GetComponent<GroundController>();
+        _onGround.OnGroundStateChanged += UpdateFriction;
+        UpdateFriction(false, _onGround.IsGrounded());
+    }
+
+    private void OnDisable()
+    {
+        _onGround.OnGroundStateChanged -= UpdateFriction;
+    }
+    
+    private void UpdateFriction(bool oldState, bool newState)
+    {
+        _rb.linearDamping = newState ? groundFriction : airFriction;
+       
+    }
+
+   
     
 
     //TEMPORARY VARIABLES?
@@ -24,7 +54,7 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
         _rb =  GetComponent<Rigidbody2D>();
         _onGround = GetComponent<GroundController>();
         _animator = GetComponentInChildren<Animator>();
-        
+        if (!useAnimation) return;
         _animator.SetBool(IsAlive, true);
     }
     
@@ -41,12 +71,18 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
     {
         reference.actions["Jump"].performed -= TryJump;
         reference.actions["Move"].performed -= SetMoveDirection;
+        
+        if (!useAnimation) return;
+        _animator.SetBool(IsAlive , false);
+
     }
 
     private void Jump()
     {
         _rb.linearVelocityY = 0;
         _rb.AddForceY(jumpForce, ForceMode2D.Impulse);
+        if(!_onGround.IsGrounded()) _animator.SetTrigger(JumpID);
+
         
     }
     
@@ -114,13 +150,11 @@ public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
         _currentMoveDirection = obj.ReadValue<float>();
         
     }
-    private static readonly int MovementX = Animator.StringToHash("MovementX");
-    private static readonly int IsGrounded = Animator.StringToHash("IsGrounded");
-    private static readonly int IsAlive = Animator.StringToHash("IsAlive");
 
     private void Update()
     {
-        _animator.SetFloat(MovementX, _rb.linearVelocityX);
+        if (!useAnimation) return;
+        _animator.SetFloat(MovementX, Mathf.Abs(_rb.linearVelocityX));
         _animator.SetBool(IsGrounded, _onGround.IsGrounded());
         
     }

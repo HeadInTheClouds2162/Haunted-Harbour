@@ -1,8 +1,4 @@
-using System;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class EnemyHuman : Enemy
@@ -13,7 +9,6 @@ public class EnemyHuman : Enemy
 
     private WeaponController weaponController;
     private float _timer;
-    private Transform target;
     private float Timetill;
     [SerializeField] private float mindirectionchange = 0.4f;
     [SerializeField] private float maxdirectionchange2 = 3f;
@@ -56,7 +51,9 @@ public class EnemyHuman : Enemy
 
     private void AttackingState()
     {
-        weaponController.PointHandTarget(target.position);
+        if (!_target) return;
+        weaponController.PointHandTarget(_target.position);
+       
     }
 
     private void FleeingState()
@@ -105,17 +102,14 @@ public class EnemyHuman : Enemy
     protected override void Move()
     {
         currentFunction();
+        bool lookDirection = _target ? transform.position.x < _target.position.x : rigidbody2D.linearVelocityX > 0;
+        SetlookDirection(lookDirection);
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+
+    protected override void OnNewTarget()
     {
-        Debug.Log("I have spotted smth");
-        if (other.attachedRigidbody && other.attachedRigidbody.TryGetComponent(out Player p))
-        {
-            Debug.Log("I have spotted player");
-            target = p.transform;
-            SetState(EAiState.Attacking);
-        }
+        SetState(EAiState.Attacking);
     }
 }
 

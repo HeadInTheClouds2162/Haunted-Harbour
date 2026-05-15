@@ -84,7 +84,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDamping: 0.1
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!114 &457137443485349510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +115,9 @@ MonoBehaviour:
   maxSpeed: 30
   jumpForce: 7
   MaxJump: 2
+  groundFriction: 2
+  airFriction: 0
+  useAnimation: 0
 --- !u!114 &4037333720194967202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfcfe4381aca8b746a8572bcd9b27c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponController
-  currentWeapon: {fileID: 884660134354203913}
+  currentWeapon: {fileID: 5459498848881666993}
   hand: {fileID: 8573508069532920944}
 --- !u!82 &975089851815467112
 AudioSource:
@@ -260,8 +263,11 @@ MonoBehaviour:
   maxSpeed: 3
   hurtParticles: {fileID: 0}
   <MaxHealth>k__BackingField: 100
-  minDirectionChangeTime: 0.4
-  maxDirectionChangeTime: 3
+  lookDirectionStartRight: 1
+  flipTransform: {fileID: 8504684272613604409}
+  cheatAlwaysSeekPlayer: 0
+  mindirectionchange: 0.4
+  maxdirectionchange2: 3
 --- !u!1 &4112052729415388500
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3616670349320714858}
   - component: {fileID: 6859586111216719780}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: DetectionRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,6 +692,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573508069532920944}
     m_Modifications:
+    - target: {fileID: 443579242630576203, guid: a0899848336858043932155377c87b3e, type: 3}
+      propertyPath: cooldownTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 443579242630576203, guid: a0899848336858043932155377c87b3e, type: 3}
+      propertyPath: inaccuracyInDegrees
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 547089430730240127, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.449
@@ -740,9 +754,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5759560531909336619, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4627741235780440877, guid: a0899848336858043932155377c87b3e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -752,6 +767,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 547089430730240127, guid: a0899848336858043932155377c87b3e, type: 3}
   m_PrefabInstance: {fileID: 5612577773530223610}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5459498848881666993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 443579242630576203, guid: a0899848336858043932155377c87b3e, type: 3}
+  m_PrefabInstance: {fileID: 5612577773530223610}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c69fa18e8f9624e9ee058616c7fa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileWeapon
 --- !u!1001 &7476812502939890922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -838,7 +864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7928741675680490094, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7953232066684492407, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_LocalPosition.x
@@ -853,17 +879,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
---- !u!114 &884660134354203913 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7747327085715112419, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
-  m_PrefabInstance: {fileID: 7476812502939890922}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c69fa18e8f9624e9ee058616c7fa4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectileWeapon
 --- !u!4 &3910488806342315106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5874419607284136072, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}

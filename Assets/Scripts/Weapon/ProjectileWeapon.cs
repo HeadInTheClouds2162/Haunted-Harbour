@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public class ProjectileWeapon : Weapon
@@ -7,11 +8,11 @@ public class ProjectileWeapon : Weapon
     [SerializeField] private Projectile prefab;
     [SerializeField] private Transform firePoint;
     [SerializeField, Min(1)] private int numProjectiles = 4;
-    [SerializeField] private float recoil = 0.1f;
+    [SerializeField] private Vector2 recoil = new Vector2(-0.1f, 0.01f);
     [SerializeField, Range(0,90)] private float inaccuracyInDegrees = 15;
 
     [SerializeField] private AudioSource audioSource;   // <— added
-    [SerializeField] private AudioClip shootSound;      // <— added
+    [SerializeField] private AudioResource shootSound;      // <— added
 
     private CinemachineImpulseSource _recoil;
 
@@ -23,7 +24,11 @@ public class ProjectileWeapon : Weapon
     protected override void Attack()
     {
         // Play sound every time the weapon fires
-        audioSource.PlayOneShot(shootSound);
+        if(shootSound)
+        {
+            audioSource.resource = (shootSound);
+            audioSource.Play();
+        }
 
         Vector3 rot = firePoint.rotation.eulerAngles;
 
@@ -36,7 +41,7 @@ public class ProjectileWeapon : Weapon
         }
 
         float rads = Mathf.Deg2Rad * rot.z;
-        _recoil.GenerateImpulseWithVelocity(new Vector3(Mathf.Cos(rads), Mathf.Sin(rads), 0) * recoil);
+        _recoil?.GenerateImpulseWithVelocity(new Vector3(Mathf.Cos(rads) * recoil.x, Mathf.Sin(rads)*recoil.y, 0));
     }
 
     private void OnDrawGizmos()

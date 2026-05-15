@@ -7,10 +7,14 @@ public class GroundController : MonoBehaviour
    [SerializeField] private Transform foot;
    [SerializeField] private float radius = 0.1f;
    [SerializeField] private float distance = 0.3f;
+   
+
    private bool _isGrounded;
    RaycastHit2D _previousHit;
    public event Action<bool, bool> OnGroundStateChanged;
-   
+
+ 
+
    private void FixedUpdate()
    {
        CheckGround();
