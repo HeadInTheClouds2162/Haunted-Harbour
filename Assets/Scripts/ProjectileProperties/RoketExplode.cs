@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RoketExplode : MonoBehaviour
+public class RoketExplode : Projectile
 {
     public float explosionRadius = 100f;
     public float explosionDamage = 50f;
@@ -9,32 +9,31 @@ public class RoketExplode : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip explosionSound;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Explode();
     }
+    
 
     void Explode()
     {
+
+
         // Spawn explosion effect
         GameObject effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
-        // Play louder explosion sound (2f = twice as loud)
         AudioSource audio = effect.GetComponent<AudioSource>();
         if (audio != null && explosionSound != null)
         {
             audio.PlayOneShot(explosionSound, 3f);
         }
 
-        // Optional second effect
         if (explosionEffect2 != null)
         {
             Instantiate(explosionEffect2, transform.position, Quaternion.identity);
         }
 
-        // Damage + force
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, _rb.includeLayers);
 
         foreach (Collider2D hit in hits)
         {

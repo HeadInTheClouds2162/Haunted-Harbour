@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
     public virtual void Shoot(Vector2 direction, int layer)
     {
         _rb.AddForce(direction * initialSpeed, ForceMode2D.Impulse);
-        _rb.excludeLayers = (1<< layer);
+        _rb.excludeLayers = (1<< layer ) | (1<< gameObject.layer); 
         _rb.includeLayers = ~(1<< layer);
         Destroy(gameObject, lifeTime);
     }
