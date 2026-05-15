@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class JellyFish : Enemy
+public class GOODJellyFish : Enemy
 {
     private static readonly int Hurt = Animator.StringToHash("Hurt");
     [SerializeField] float minBurstTime = 1f;
@@ -59,14 +59,14 @@ public class JellyFish : Enemy
     public override void TakeDamage(float damage, Vector2 hitPoint, Vector2 hitNormal, float knockback)
     {
         _animator.SetTrigger(Hurt);
-        base.TakeDamage(damage, hitNormal, hitPoint, knockback);
+        base.TakeDamage(-damage, hitNormal, hitPoint, knockback);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.rigidbody && other.rigidbody.TryGetComponent(out Player target))
         {
-            target.TakeDamage(damage,rigidbody2D.linearVelocity, transform.position, knockbackamount );
+            target.TakeDamage(-damage,rigidbody2D.linearVelocity, transform.position, knockbackamount);
         }
     }
 }

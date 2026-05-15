@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, IDamagable
 {
+    private Rigidbody2D rigidbody2D;
     [SerializeField] private PlayerInput action;
     private IInputReceiver[] _receiver;
     [SerializeField] private AudioResource hurtSoundEffect;
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Awake()
     {
-
+        rigidbody2D = GetComponent<Rigidbody2D>();
         _receiver = GetComponentsInChildren < IInputReceiver >();
         foreach (IInputReceiver receiver in _receiver)
         {
@@ -76,13 +77,14 @@ public class Player : MonoBehaviour, IDamagable
     }
 
 
-    public void TakeDamage(float damage, Vector2 direction, Vector2 position)
+    public void TakeDamage(float damage, Vector2 direction, Vector2 position, float Knockback)
     {
         Debug.Log("Player Took Damage");
         
         CurrentHealth -= damage;
         audioSource.resource = hurtSoundEffect;
         audioSource.Play();
+        rigidbody2D.AddForce(direction  * Knockback,  ForceMode2D.Impulse);
     }
 
 

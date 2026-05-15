@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovementComponent : MonoBehaviour, IInputReceiver
 {
     
+    
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpForce;

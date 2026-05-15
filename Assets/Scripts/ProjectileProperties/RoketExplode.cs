@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RoketExplode : MonoBehaviour
 {
+    [SerializeField] private float knockbackamount = 5f;
     public float explosionRadius = 100f;
     public float explosionDamage = 50f;
     public GameObject explosionEffect;
@@ -45,7 +46,7 @@ public class RoketExplode : MonoBehaviour
                 Vector2 direction = (hit.transform.position - transform.position).normalized;
                 Vector2 position = transform.position;
 
-                damageable.TakeDamage(explosionDamage, direction, position);
+                damageable.TakeDamage(explosionDamage, direction, position,knockbackamount );
             }
 
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();

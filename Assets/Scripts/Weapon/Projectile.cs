@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected float damage = 1;
     [SerializeField] protected float lifeTime = 5;
     [SerializeField] protected float initialSpeed = 50;
-
+    [SerializeField] private float knockbackamount = 5f;
     [SerializeField] protected bool rotateWithVelocity  = true;
     
     protected Rigidbody2D _rb;
@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour
         if (other.rigidbody && other.rigidbody.TryGetComponent(out IDamagable damagable))
         {
             ContactPoint2D col = other.contacts[0];
-            damagable.TakeDamage(damage, col.normal, col.point);
+            damagable.TakeDamage(damage, col.normal, col.point,  knockbackamount);
         }
 
         if (_trailRenderer)

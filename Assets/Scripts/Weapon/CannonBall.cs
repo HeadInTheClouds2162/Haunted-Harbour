@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class CannonBall : Projectile
+
 {
+    [SerializeField] private float knockbackamount = 5f;
     protected override void OnCollisionEnter2D(Collision2D other)
     {
         Rigidbody2D rb = other.rigidbody;
@@ -13,7 +15,7 @@ public class CannonBall : Projectile
         }
         else if (rb.TryGetComponent(out IDamagable damagable))
         {
-            damagable.TakeDamage(damage * _rb.linearVelocity.magnitude, col.normal, col.point);
+            damagable.TakeDamage(damage * _rb.linearVelocity.magnitude, col.normal, col.point, knockbackamount );
         }
         else
         {

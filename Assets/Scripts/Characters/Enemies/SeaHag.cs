@@ -48,7 +48,7 @@ base.Move();
             
             if (_timer >= 1f)
             {
-                target.TakeDamage(damage,Vector2.zero, Vector2.zero);
+                target.TakeDamage(damage,Vector2.zero, Vector2.zero, 0 );
                 _timer = 0f;
             }
         }

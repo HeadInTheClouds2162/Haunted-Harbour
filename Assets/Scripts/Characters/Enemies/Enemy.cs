@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    public virtual void TakeDamage(float damage, Vector2 direction, Vector2 position)
+    public virtual void TakeDamage(float damage, Vector2 direction, Vector2 position, float knockback)
     {
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour, IDamagable
             
             Die();
         }
-
+        rigidbody2D.AddForce(direction  * knockback,  ForceMode2D.Impulse);
         if (hurtParticles)
         {
             hurtParticles.transform.SetPositionAndRotation(position, Quaternion.Euler(0,0,Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
