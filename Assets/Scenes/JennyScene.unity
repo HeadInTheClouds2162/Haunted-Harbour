@@ -12462,6 +12462,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   hand: {fileID: 167717085200807115}
   startRight: 1
+  weapons: []
 --- !u!1 &3027498157588277230
 GameObject:
   m_ObjectHideFlags: 0
@@ -12865,7 +12866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7153913435123556117, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7298358239320488402, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_Name
@@ -12875,6 +12876,10 @@ PrefabInstance:
       propertyPath: prefab
       value: 
       objectReference: {fileID: 2404450599793277027, guid: c86539a5b4431f74f8666c6e7db369ca, type: 3}
+    - target: {fileID: 7487216266329814518, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: numProjectiles
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7948199564930786455, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
@@ -12995,6 +13000,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7691670742386151526, guid: 32730ea3ac4775c429d108c05794337d, type: 3}
+      propertyPath: maxSpawnCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691670742386151526, guid: 32730ea3ac4775c429d108c05794337d, type: 3}
+      propertyPath: minSpawnCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691670742386151526, guid: 32730ea3ac4775c429d108c05794337d, type: 3}
+      propertyPath: maxSpawnInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691670742386151526, guid: 32730ea3ac4775c429d108c05794337d, type: 3}
+      propertyPath: minSpawnInterval
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7691670742386151526, guid: 32730ea3ac4775c429d108c05794337d, type: 3}
       propertyPath: enemyPrefabs.Array.size
       value: 2
@@ -13556,7 +13577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7959757337696628632, guid: 6e43188c33b057f43b5e3f09108994e3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9207781223419083019, guid: 6e43188c33b057f43b5e3f09108994e3, type: 3}
       propertyPath: prefab
@@ -14051,6 +14072,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2177726616940112805, guid: 9d8a1164b250c4f4288742e868b900a3, type: 3}
+      propertyPath: m_ColliderMask.m_Bits
+      value: 136
+      objectReference: {fileID: 0}
     - target: {fileID: 4531619456725537899, guid: 9d8a1164b250c4f4288742e868b900a3, type: 3}
       propertyPath: m_Name
       value: EFFECTORS BWAHAHAHAHAH
