@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private AudioResource hurtSoundEffect;
     [SerializeField] private AudioResource deathSoundEffect;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private bool lookDirectionStartRight = true;
+    [field: SerializeField] public bool lookDirectionStartRight { get; private set; } = true;
     [SerializeField] private Transform flipTransform;
     public Action OnHealthChanged { get; set; }
     public Action OnDeath { get; set; }

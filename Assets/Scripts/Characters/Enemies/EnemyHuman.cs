@@ -1,8 +1,4 @@
-using System;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class EnemyHuman : Enemy
@@ -55,8 +51,9 @@ public class EnemyHuman : Enemy
 
     private void AttackingState()
     {
-        if(_target)
-            weaponController.PointHandTarget(_target.position);
+        if (!_target) return;
+        weaponController.PointHandTarget(_target.position);
+       
     }
 
     private void FleeingState()
@@ -105,6 +102,8 @@ public class EnemyHuman : Enemy
     protected override void Move()
     {
         currentFunction();
+        bool lookDirection = _target ? transform.position.x < _target.position.x : rigidbody2D.linearVelocityX > 0;
+        SetlookDirection(lookDirection);
     }
     
 

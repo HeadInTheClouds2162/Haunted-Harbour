@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class WeaponController : MonoBehaviour, IInputReceiver
 {
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private Transform hand;
+    [SerializeField] private bool startRight = true;
     private Player player;
+    
     
     public void SetWeapon(Weapon weapon)
     {
@@ -63,6 +66,10 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     {
         float rise =  state.y - hand.position.y;
         float run = state.x - hand.position.x;
+        
+        if(!startRight) run *= -1;
+        if(!startRight) rise *= -1;
+        
         float angle = Mathf.Atan2(rise, run) * Mathf.Rad2Deg;
         hand.rotation = Quaternion.Euler(0, 0, angle);
 
