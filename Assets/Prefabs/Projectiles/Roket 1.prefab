@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3893636585016153751}
   - component: {fileID: 7806101018490989827}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,8 +166,8 @@ GameObject:
   - component: {fileID: 8793612828129050493}
   - component: {fileID: -4381627102916896634}
   - component: {fileID: -7606240323165982348}
-  m_Layer: 3
-  m_Name: Roket
+  m_Layer: 7
+  m_Name: Roket 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
