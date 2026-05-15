@@ -7,6 +7,8 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private Transform hand;
     [SerializeField] private bool startRight = true;
+    [SerializeField] private Weapon[] weapons;
+    private int WeaponIndex;
     private Player player;
     
     
@@ -22,16 +24,34 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     public void Awake()
     {
         player = GetComponent<Player>();
+        weapons = GetComponentsInChildren<Weapon>(true);
     }
     
-
     public void BindControls(PlayerInput reference)
     {
         reference.actions["Shoot"].performed += Shoot;
         reference.actions["MousePosition"].performed += PointHandTarget;
+        reference.actions["Previous Weapon"].performed += PreviousWeapon;
+        reference.actions["Next Weapon"].performed += NextWeapon;
         _camera = Camera.main;
     }
 
+    private void PreviousWeapon(InputAction.CallbackContext obj)
+    {
+        WeaponIndex += 1;
+        if (WeaponIndex >= weapons.Length)
+            WeaponIndex = 0;
+        SetWeapon(weapons[WeaponIndex]);
+    }
+
+    private void NextWeapon(InputAction.CallbackContext obj)
+    {
+        WeaponIndex -= 1;
+        if (WeaponIndex < 0)
+            WeaponIndex = weapons.Length - 1;
+        SetWeapon(weapons[WeaponIndex]);
+    }
+    
     private void Shoot(InputAction.CallbackContext obj)
     {
         bool isShooting = obj.ReadValueAsButton();
@@ -43,6 +63,8 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     {
         reference.actions["Shoot"].performed -= Shoot;
         reference.actions["MousePosition"].performed -= PointHandTarget;
+        reference.actions["Previous Weapon"].performed -= PreviousWeapon;
+        reference.actions["Next Weapon"].performed -= NextWeapon;
     }
 
     private void PointHandTarget(InputAction.CallbackContext obj)
@@ -79,9 +101,4 @@ public class WeaponController : MonoBehaviour, IInputReceiver
         
         hand.transform.localScale = new Vector3(1, faceRight, 1);
     }
-    
-    
-    
-    }
-
-
+}
