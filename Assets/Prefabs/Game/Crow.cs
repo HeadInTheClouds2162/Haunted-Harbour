@@ -13,8 +13,12 @@ public class Crow : MonoBehaviour
     }
 
     void FixedUpdate() 
-    { rigidbody2D.MovePosition(new Vector2(rigidbody2D.position.x, rigidbody2D.position.y + Mathf.Sin(Time.time) * bobHeight));
-       rigidbody2D.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+    { 
+        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 vel = direction * (speed * Time.deltaTime);
+        rigidbody2D.linearVelocity = vel;
+        transform.position += new Vector3(0, Mathf.Sin(Time.time) * bobHeight, 0);
+        // JENNY IF YOU WANT THE CROWS TO LOOK AT THE TARGETS, Look at Enemy.Move()
     }
 
 }
