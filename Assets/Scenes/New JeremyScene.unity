@@ -347,7 +347,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -265572451174272723, guid: f6e3819e62d26314e936334b6a6f4425, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3536202024078637437, guid: 0b70c758d282aad40abc78fe073ceaac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -489,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3536202024078637437, guid: 0b70c758d282aad40abc78fe073ceaac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -560,7 +560,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -8
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4227067862949901682, guid: 81e6ed2907fdc2545a9e96e120449df0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -719,7 +719,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2149796, y: 0.1099987, z: -10}
+  m_LocalPosition: {x: -1.2149823, y: -1.0328608, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1150,7 +1150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3536202024078637437, guid: 0b70c758d282aad40abc78fe073ceaac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1256,6 +1256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212411207512875360, guid: 42ad1936bb0587441a32c4a044b43d0b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 6484912500509321554, guid: 42ad1936bb0587441a32c4a044b43d0b, type: 3}
       propertyPath: m_Name
       value: PushableBox (1)
@@ -1369,7 +1373,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -8
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2370176797451463240, guid: def8dcbf96046f84c90c2259a377fdf0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1495,6 +1499,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212411207512875360, guid: 42ad1936bb0587441a32c4a044b43d0b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 6484912500509321554, guid: 42ad1936bb0587441a32c4a044b43d0b, type: 3}
       propertyPath: m_Name
       value: PushableBox (2)
@@ -1753,7 +1761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1408723480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1767,7 +1775,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   enemyPrefabs:
-  - {fileID: 6834518590168316733, guid: 78e647d659fc41f419cf510bb7b72abe, type: 3}
+  - {fileID: 7669902478771617409, guid: 93db8bfc5c27f8d469749b60292c6e05, type: 3}
+  - {fileID: 6834518590168316733, guid: 3bb96bcac1f778d40af1b42731c8f1fe, type: 3}
   spawnRadius: 5
   minSpawnCount: 1
   maxSpawnCount: 3
@@ -2035,7 +2044,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7521714790235760469, guid: 819f4995de8a4154e80abe6398ed82cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2411,7 +2420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3536202024078637437, guid: 0b70c758d282aad40abc78fe073ceaac, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2483,6 +2492,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212411207512875360, guid: 42ad1936bb0587441a32c4a044b43d0b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 6484912500509321554, guid: 42ad1936bb0587441a32c4a044b43d0b, type: 3}
       propertyPath: m_Name
       value: PushableBox

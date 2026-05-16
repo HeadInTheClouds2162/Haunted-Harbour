@@ -171,10 +171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileWeapon
   cooldownTime: 1
-  prefab: {fileID: 718480295811689396, guid: 75ce971c2d8986149b1a553f548fc02c, type: 3}
+  prefab: {fileID: 8793612828129050493, guid: 75ce971c2d8986149b1a553f548fc02c, type: 3}
   firePoint: {fileID: 4326558991334459302}
   numProjectiles: 1
-  recoil: 1
+  recoil: {x: -0.1, y: 0.01}
   inaccuracyInDegrees: 1
   audioSource: {fileID: -6559489449302200817}
   shootSound: {fileID: 8300000, guid: 8136c0a90e672d141a024c7d4921e55f, type: 3}

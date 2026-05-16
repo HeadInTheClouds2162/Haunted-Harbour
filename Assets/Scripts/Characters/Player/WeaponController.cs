@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -61,6 +62,12 @@ public class WeaponController : MonoBehaviour, IInputReceiver
 
     public void UnbindControls(PlayerInput reference)
     {
+        foreach (var weapon in weapons)
+        {
+            weapon.StopAttacking();
+        }
+
+        
         reference.actions["Shoot"].performed -= Shoot;
         reference.actions["MousePosition"].performed -= PointHandTarget;
         reference.actions["Previous Weapon"].performed -= PreviousWeapon;

@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
 
 
-    private void Die()
+    protected virtual void Die()
     {
         if (hurtParticles)
         {
@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour, IDamagable
             Destroy(hurtParticles.gameObject, hurtParticles.main.duration); // Destroy the particles after they're done playing
         }
 
-        _animator.SetBool(IsAlive, false);
+        _animator?.SetBool(IsAlive, false);
         rigidbody2D.simulated = false;
         Destroy(gameObject, 3);
     }
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour, IDamagable
     
     private void FixedUpdate()
     {
-        _animator.SetFloat(MovementX, Mathf.Abs(rigidbody2D.linearVelocityX));
+        _animator?.SetFloat(MovementX, Mathf.Abs(rigidbody2D.linearVelocityX));
         if (cheatAlwaysSeekPlayer) _target = Player.playerTransform;
         Move();
 

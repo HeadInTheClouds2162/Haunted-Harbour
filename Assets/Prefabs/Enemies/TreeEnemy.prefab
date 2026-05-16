@@ -115,6 +115,9 @@ MonoBehaviour:
   maxSpeed: 30
   jumpForce: 7
   MaxJump: 2
+  groundFriction: 2
+  airFriction: 0
+  useAnimation: 0
 --- !u!114 &4037333720194967202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponController
   currentWeapon: {fileID: 884660134354203913}
   hand: {fileID: 8573508069532920944}
+  startRight: 1
+  weapons: []
 --- !u!82 &975089851815467112
 AudioSource:
   m_ObjectHideFlags: 0
@@ -260,8 +265,11 @@ MonoBehaviour:
   maxSpeed: 3
   hurtParticles: {fileID: 0}
   <MaxHealth>k__BackingField: 100
-  minDirectionChangeTime: 0.4
-  maxDirectionChangeTime: 3
+  lookDirectionStartRight: 1
+  flipTransform: {fileID: 8504684272613604409}
+  cheatAlwaysSeekPlayer: 0
+  mindirectionchange: 0.4
+  maxdirectionchange2: 3
 --- !u!1 &4112052729415388500
 GameObject:
   m_ObjectHideFlags: 0

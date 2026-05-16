@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected float damage = 1;
     [SerializeField] protected float lifeTime = 5;
     [SerializeField] protected float initialSpeed = 50;
-    [SerializeField] private float knockbackamount = 5f;
+    [SerializeField] protected float knockbackamount = 5f;
     [SerializeField] protected bool rotateWithVelocity  = true;
     
     protected Rigidbody2D _rb;
@@ -29,8 +29,13 @@ public class Projectile : MonoBehaviour
     public virtual void Shoot(Vector2 direction, int layer)
     {
         _rb.AddForce(direction * initialSpeed, ForceMode2D.Impulse);
-        _rb.excludeLayers = (1<< layer ) | (1<< gameObject.layer); 
-        _rb.includeLayers = ~(1<< layer);
+        int val = 1 << layer;
+        int val2 = 1 << (layer + 1);
+        //I've made it so that the next layer down includes the projectile layer, THIS IS NOT GOOD DESIGN
+        // We've run into a strange issue regarding how much time we have, and the needs of the project that this is what we get.
+        _rb.excludeLayers = (val) | (val2); 
+        _rb.includeLayers = ~((val) | val2);
+        gameObject.layer = layer + 1;
         Destroy(gameObject, lifeTime);
     }
 

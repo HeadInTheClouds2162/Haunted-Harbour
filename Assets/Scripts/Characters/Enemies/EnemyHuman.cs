@@ -16,6 +16,11 @@ public class EnemyHuman : Enemy
     private float directionTimeChange;
     private float currentTimeChange;
 
+    protected override void Die()
+    {
+        base.Die();
+        weaponController.Shoot(false);
+    }
 
     private void IdleState()
     {

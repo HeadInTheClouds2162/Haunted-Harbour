@@ -161,11 +161,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2915823657665813771}
   - component: {fileID: 7939505125220818252}
-  - component: {fileID: 718480295811689396}
   - component: {fileID: 4202437027805198278}
   - component: {fileID: 8793612828129050493}
   - component: {fileID: -4381627102916896634}
-  - component: {fileID: -7606240323165982348}
   m_Layer: 3
   m_Name: Roket
   m_TagString: Untagged
@@ -216,22 +214,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &718480295811689396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621521147378058991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ef723607f03844b8174621ff1e3763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  damage: 50
-  lifeTime: 10
-  initialSpeed: 20
-  rotateWithVelocity: 1
 --- !u!212 &4202437027805198278
 SpriteRenderer:
   serializedVersion: 2
@@ -303,6 +285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6345df158bc9eb449e55c9241f75921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoketExplode
+  damage: 1
+  lifeTime: 5
+  initialSpeed: 50
+  knockbackamount: 50
+  rotateWithVelocity: 1
   explosionRadius: 3
   explosionDamage: 50
   explosionEffect: {fileID: 6019479257577753058, guid: 83384eb84d65de648a79bc88e9dd27e8, type: 3}
@@ -346,19 +333,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   m_Size: {x: 9.5, y: 1.5}
   m_Direction: 1
---- !u!111 &-7606240323165982348
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621521147378058991}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0

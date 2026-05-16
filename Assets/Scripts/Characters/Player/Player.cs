@@ -108,5 +108,6 @@ public class Player : MonoBehaviour, IDamagable
             receiver.UnbindControls(action);
         OnDeath?.Invoke();
         Destroy(gameObject, 5);
+
     }
 }

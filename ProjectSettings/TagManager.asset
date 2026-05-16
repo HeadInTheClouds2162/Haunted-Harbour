@@ -5,17 +5,19 @@ TagManager:
   serializedVersion: 3
   tags:
   - Spike
+  - Enemy
+  - Portal
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
+  - Player
   - PlayerProjectile
   - Enemy
-  - 
-  - 
+  - EnemyProjectile
   - 
   - 
   - 
