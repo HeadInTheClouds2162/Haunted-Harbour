@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7948199564930786455}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 7847776020391318793}
   - component: {fileID: 7734745450086444591}
   - component: {fileID: 1084858711693083957}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ Transform:
   m_GameObject: {fileID: 2611378970790180141}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1170481, y: -1.4826809, z: -10}
+  m_LocalPosition: {x: -0.79847604, y: -0.57786083, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,7 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325071234524360121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 2973533925301312222}
   - component: {fileID: 2706057159871175381}
   - component: {fileID: 4885230623800850983}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Appearance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 963643380115697472}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 6003467015710487491}
   - component: {fileID: 4023365720221826320}
   - component: {fileID: 2054413398473947873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WorldCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 5910308876467934447}
   - component: {fileID: 4064406521301302839}
   - component: {fileID: 37747141043021764}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &6614616929476823196
@@ -712,6 +712,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 7487216266329814518}
   hand: {fileID: 7948199564930786455}
   startRight: 1
+  weapons: []
 --- !u!82 &37747141043021764
 AudioSource:
   m_ObjectHideFlags: 0
@@ -819,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5697661187429925656}
   - component: {fileID: 4785942364863440915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TargetGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +836,7 @@ Transform:
   m_GameObject: {fileID: 9004156050402259979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1170481, y: -1.4826809, z: 0}
+  m_LocalPosition: {x: -0.79847604, y: -0.57786083, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -872,6 +873,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7948199564930786455}
     m_Modifications:
+    - target: {fileID: 720333961950604265, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662548278261801361, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5874419607284136072, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.23
@@ -917,6 +926,10 @@ PrefabInstance:
       value: RoketLawnchair 1
       objectReference: {fileID: 0}
     - target: {fileID: 7928741675680490094, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928741675680490094, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -938,6 +951,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5055054865147247818}
     m_Modifications:
+    - target: {fileID: 800293553990403591, guid: b6f5dce5f5211614d9cf59d9ddd4f763, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4111202377259968962, guid: b6f5dce5f5211614d9cf59d9ddd4f763, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1018,9 +1035,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5471402102142105932, guid: b6f5dce5f5211614d9cf59d9ddd4f763, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5888274013915165257, guid: b6f5dce5f5211614d9cf59d9ddd4f763, type: 3}
       propertyPath: m_Name
       value: HealthBar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888274013915165257, guid: b6f5dce5f5211614d9cf59d9ddd4f763, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1086,7 +1111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1006398904646337229, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1006398904646337229, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_IsActive
@@ -1094,11 +1119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469010321523910525, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6680065223211539812, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1164,7 +1189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3370813609796425133, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5759560531909336619, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_Name
@@ -1172,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5759560531909336619, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5759560531909336619, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_IsActive

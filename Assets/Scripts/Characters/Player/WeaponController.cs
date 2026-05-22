@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +9,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     [SerializeField] private Weapon currentWeapon;
     [SerializeField] private Transform hand;
     [SerializeField] private bool startRight = true;
-    [SerializeField] private Weapon[] weapons;
+    [SerializeField] private List<Weapon> weapons;
     private int WeaponIndex;
     private Player player;
     
@@ -25,7 +26,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     public void Awake()
     {
         player = GetComponent<Player>();
-        weapons = GetComponentsInChildren<Weapon>(true);
+        weapons = GetComponentsInChildren<Weapon>(true).ToList();
     }
     
     public void BindControls(PlayerInput reference)
@@ -40,7 +41,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     private void PreviousWeapon(InputAction.CallbackContext obj)
     {
         WeaponIndex += 1;
-        if (WeaponIndex >= weapons.Length)
+        if (WeaponIndex >= weapons.Count)
             WeaponIndex = 0;
         SetWeapon(weapons[WeaponIndex]);
     }
@@ -49,7 +50,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     {
         WeaponIndex -= 1;
         if (WeaponIndex < 0)
-            WeaponIndex = weapons.Length - 1;
+            WeaponIndex = weapons.Count - 1;
         SetWeapon(weapons[WeaponIndex]);
     }
     
@@ -107,5 +108,13 @@ public class WeaponController : MonoBehaviour, IInputReceiver
         if(angle is > 90 or < -90) faceRight = -1;
         
         hand.transform.localScale = new Vector3(1, faceRight, 1);
+    }
+
+    public void AddWeapon(Weapon weaponPrefab)
+    {
+        weapons.Add(weaponPrefab);
+        weaponPrefab.transform.SetParent(hand);
+        weaponPrefab.transform.localPosition = Vector3.zero;
+        weaponPrefab.transform.localRotation = Quaternion.identity;
     }
 }

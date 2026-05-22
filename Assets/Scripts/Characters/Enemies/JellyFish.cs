@@ -14,6 +14,7 @@ public class JellyFish : Enemy
 
     protected override void Start()
     {
+        base.Start();
         _timer = Random.Range(minBurstTime, maxBurstTime);
     }
 
@@ -69,4 +70,4 @@ public class JellyFish : Enemy
             target.TakeDamage(damage,rigidbody2D.linearVelocity, transform.position, knockbackamount );
         }
     }
-}
+}   

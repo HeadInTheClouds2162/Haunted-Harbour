@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 623156561811287500}
   - component: {fileID: 6117567523736770811}
   - component: {fileID: 172553544588008517}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CannonWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +103,10 @@ MonoBehaviour:
   prefab: {fileID: 2404450599793277027, guid: c86539a5b4431f74f8666c6e7db369ca, type: 3}
   firePoint: {fileID: 8366688307849958221}
   numProjectiles: 1
-  recoil: 1.5
+  recoil: {x: -0.1, y: 0.01}
   inaccuracyInDegrees: 3
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
 --- !u!1 &2469010321523910525
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8304573509868976781}
   - component: {fileID: 3303683652829470542}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CannonMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8366688307849958221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

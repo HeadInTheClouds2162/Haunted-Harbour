@@ -66,15 +66,19 @@ public class EnemyHuman : Enemy
         
     }
 
-    private void Start()
+    protected override void Start()
     {
+        
         weaponController = GetComponent<WeaponController>();
 
         Weapon[] weapons = GetComponentsInChildren<Weapon>();
         
-        SetState(EAiState.Idle);
+        if(_target) SetState(EAiState.Attacking);
+        else SetState(EAiState.Idle);
         
         weaponController.SetWeapon(weapons[Random.Range(0, weapons.Length)]); //<< CHOOSE A RANDOM WEAPON
+        
+        base.Start();
     }
 
     private void SetState(EAiState newState)

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812578145962271221}
   - component: {fileID: 5947919738592626938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CloudInBottle_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7669902478771617420}
   - component: {fileID: 7669902478771617423}
   - component: {fileID: 7669902478771617422}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Jellyfish
   m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -77,13 +77,15 @@ MonoBehaviour:
   speed: 500
   maxSpeed: 50
   hurtParticles: {fileID: 6461518344450522854}
-  <MaxHealth>k__BackingField: 25
+  <MaxHealth>k__BackingField: 20
   lookDirectionStartRight: 1
   flipTransform: {fileID: 7669902479120218043}
   cheatAlwaysSeekPlayer: 1
+  useAnimations: 1
   minBurstTime: 0.3
   maxBurstTime: 1
-  damage: 15
+  damage: 10
+  knockbackamount: 5
   torqueStrength: 50
 --- !u!1 &7669902479120218042
 GameObject:
@@ -97,7 +99,7 @@ GameObject:
   - component: {fileID: 7669902479120218054}
   - component: {fileID: 7669902479120218041}
   - component: {fileID: 7669902479120218040}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Jellyfish Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,6 +249,10 @@ PrefabInstance:
     - target: {fileID: 3586078270847807223, guid: ca5043bdbce046741a2c12f388e1e0ca, type: 3}
       propertyPath: m_Name
       value: Chunks of skin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586078270847807223, guid: ca5043bdbce046741a2c12f388e1e0ca, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4946369261039729189, guid: ca5043bdbce046741a2c12f388e1e0ca, type: 3}
       propertyPath: m_LocalPosition.x

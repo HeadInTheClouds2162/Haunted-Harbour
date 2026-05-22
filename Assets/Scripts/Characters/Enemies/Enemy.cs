@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private Transform flipTransform;
 
     [SerializeField] private bool cheatAlwaysSeekPlayer;
-    [SerializeField] private bool useAnimations;
+    [SerializeField] private bool useAnimations = true;
     
     private bool _isFacingright; 
 
