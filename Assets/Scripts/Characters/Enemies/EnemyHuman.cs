@@ -19,7 +19,7 @@ public class EnemyHuman : Enemy
     protected override void Die()
     {
         base.Die();
-        weaponController.Shoot(false);
+        weaponController?.Shoot(false);
     }
 
     private void IdleState()
