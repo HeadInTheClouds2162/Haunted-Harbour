@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private Transform flipTransform;
 
     [SerializeField] private bool cheatAlwaysSeekPlayer;
+    [SerializeField] private bool useAnimations;
     
     private bool _isFacingright; 
 
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour, IDamagable
     protected virtual void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponentInChildren<Animator>();
+        if(useAnimations) _animator = GetComponentInChildren<Animator>();
         CurrentHealth = MaxHealth;
 
      
