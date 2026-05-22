@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3196258480119333877}
   - component: {fileID: 570047051162442519}
   - component: {fileID: 2505945145388912659}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sheep(Weapon)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,10 @@ MonoBehaviour:
   prefab: {fileID: 1419858492579280306, guid: e7f08caca3ea4e9428f059e2cb830843, type: 3}
   firePoint: {fileID: 8782514491606110338}
   numProjectiles: 3
+  recoil: {x: -0.1, y: 0.01}
   inaccuracyInDegrees: 15
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
 --- !u!114 &2505945145388912659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8782514491606110338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

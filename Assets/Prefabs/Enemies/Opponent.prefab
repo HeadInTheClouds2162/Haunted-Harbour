@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4308323130043993795}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 3097936321767061091}
   - component: {fileID: 5698480501799517140}
   - component: {fileID: 5710263697534308030}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Appearance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 2063225033870027938}
   - component: {fileID: 8589064689144672171}
   - component: {fileID: 8316050681376056162}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Opponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,6 +310,9 @@ MonoBehaviour:
   maxSpeed: 30
   jumpForce: 7
   MaxJump: 0
+  groundFriction: 2
+  airFriction: 0
+  useAnimation: 0
 --- !u!114 &5740413489698849110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponController
   currentWeapon: {fileID: 2149944259173841239}
   hand: {fileID: 4308323130043993795}
+  startRight: 1
+  weapons: []
 --- !u!82 &8589064689144672171
 AudioSource:
   m_ObjectHideFlags: 0
@@ -545,7 +550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464509744984843600}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,7 +622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3370813609796425133, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5759560531909336619, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_Name
@@ -625,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5759560531909336619, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5759560531909336619, guid: a0899848336858043932155377c87b3e, type: 3}
       propertyPath: m_IsActive
@@ -691,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5881557884820655896, guid: 6e43188c33b057f43b5e3f09108994e3, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7959757337696628632, guid: 6e43188c33b057f43b5e3f09108994e3, type: 3}
       propertyPath: m_Name
@@ -699,7 +704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7959757337696628632, guid: 6e43188c33b057f43b5e3f09108994e3, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7959757337696628632, guid: 6e43188c33b057f43b5e3f09108994e3, type: 3}
       propertyPath: m_IsActive
@@ -769,7 +774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1006398904646337229, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1006398904646337229, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_IsActive
@@ -777,11 +782,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469010321523910525, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6680065223211539812, guid: d29717baeabb16f4b873c1d6e7c6e65c, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -803,7 +808,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 720333961950604265, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1595792185808619581, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: DefaultVelocity.x
@@ -815,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3662548278261801361, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4326558991334459302, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_LocalPosition.x
@@ -875,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7928741675680490094, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7928741675680490094, guid: 60b50e33a9e38cc4ead1464deab58709, type: 3}
       propertyPath: m_IsActive

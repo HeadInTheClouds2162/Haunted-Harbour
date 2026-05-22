@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6076797378316328289}
   - component: {fileID: 6577182282135355202}
   - component: {fileID: 5871049921632439639}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SeaHag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +81,7 @@ MonoBehaviour:
   lookDirectionStartRight: 1
   flipTransform: {fileID: 3497557199492150478}
   cheatAlwaysSeekPlayer: 1
+  useAnimations: 0
   MaxTotalSecondsTouchedForDamage: 0.1
   damage: 1
   bobHeight: 0.4
@@ -97,7 +98,7 @@ GameObject:
   - component: {fileID: 1985670589871780068}
   - component: {fileID: 8666436032855226085}
   - component: {fileID: 7737434480268318543}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SeaHagImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2418763846715822489, guid: da81892cd5162474f8369b7dc3aecb66, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6639241978273784739, guid: da81892cd5162474f8369b7dc3aecb66, type: 3}
       propertyPath: m_LocalPosition.x

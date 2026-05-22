@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 63019762003922240, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1926651997966911757, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.168
@@ -51,6 +55,14 @@ PrefabInstance:
     - target: {fileID: 4976626417479222412, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
       propertyPath: m_Name
       value: Poop projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976626417479222412, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589536795923668087, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8310944365082602694, guid: 5700acd2cb9fe4e4ea57c830ef47d8a1, type: 3}
       propertyPath: m_Color.b

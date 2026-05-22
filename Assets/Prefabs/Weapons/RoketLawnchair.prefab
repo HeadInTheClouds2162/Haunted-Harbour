@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4903778879822322660}
   - component: {fileID: 7736555068711936567}
   - component: {fileID: 7399864841250799252}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: RoketLawnchair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3523963724519441213}
   - component: {fileID: 1193322982306790216}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Meesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5002774165647882750}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: FireingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

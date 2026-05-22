@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3825164522981366190}
   - component: {fileID: 3509342848153579981}
   - component: {fileID: -1232842909291722572}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SkullCrab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,10 +75,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2b207714902d143b0b62430259ad1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkullCrab
-  health: 10
   speed: 2
   maxSpeed: 6
   hurtParticles: {fileID: 4907565955457537325}
+  <MaxHealth>k__BackingField: 0
+  lookDirectionStartRight: 1
+  flipTransform: {fileID: 0}
+  cheatAlwaysSeekPlayer: 0
+  useAnimations: 0
   detectionDistance: 1
   detectionLayers:
     serializedVersion: 2
@@ -140,7 +144,7 @@ GameObject:
   - component: {fileID: 4123543334047646755}
   - component: {fileID: 9118124067254983848}
   - component: {fileID: 703697239269434350}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: SkullCrabImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 2418763846715822489, guid: da81892cd5162474f8369b7dc3aecb66, type: 3}
       propertyPath: m_Name
       value: Hurt Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418763846715822489, guid: da81892cd5162474f8369b7dc3aecb66, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6639241978273784739, guid: da81892cd5162474f8369b7dc3aecb66, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3436945208998445747}
   - component: {fileID: 3494990237099782303}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PigMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7092806966288088065}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FiringPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 6080776533110331293}
   - component: {fileID: 3840735991802428383}
   - component: {fileID: 6723197673973334754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,5 +226,7 @@ MonoBehaviour:
   prefab: {fileID: 7045729127571117935, guid: 29dd84efc74e31644a82dc6a980470fa, type: 3}
   firePoint: {fileID: 7092806966288088065}
   numProjectiles: 14
-  recoil: 3
+  recoil: {x: -0.1, y: 0.01}
   inaccuracyInDegrees: 6.6
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
