@@ -69,4 +69,4 @@ public class JellyFish : Enemy
             target.TakeDamage(damage,rigidbody2D.linearVelocity, transform.position, knockbackamount );
         }
     }
-}
+}   

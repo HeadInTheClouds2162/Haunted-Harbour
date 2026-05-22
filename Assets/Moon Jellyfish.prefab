@@ -81,9 +81,10 @@ MonoBehaviour:
   lookDirectionStartRight: 1
   flipTransform: {fileID: 8990939643010161245}
   cheatAlwaysSeekPlayer: 1
+  useAnimations: 0
   minBurstTime: 0.2
   maxBurstTime: 0.5
-  damage: 3
+  damage: 2
   knockbackamount: 5
   torqueStrength: 50
 --- !u!1 &9091862314016579346

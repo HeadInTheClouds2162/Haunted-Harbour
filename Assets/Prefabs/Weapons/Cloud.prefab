@@ -58,14 +58,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7959757337696628632}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.6592762, w: 0.7519008}
-  m_LocalPosition: {x: 0.41715392, y: 0.06389548, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.06596557, y: 0.06450227, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1725615453047803973}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -77.491}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7524449695163616603
 SpriteRenderer:
   serializedVersion: 2
@@ -141,7 +141,10 @@ MonoBehaviour:
   prefab: {fileID: 6282641679447465903, guid: f7a80cdcfc9b9d146ad529e43ec580e7, type: 3}
   firePoint: {fileID: 1725615453047803973}
   numProjectiles: 4
+  recoil: {x: -0.1, y: 0.01}
   inaccuracyInDegrees: 23.2
+  audioSource: {fileID: 0}
+  shootSound: {fileID: 0}
 --- !u!114 &3996950451465473275
 MonoBehaviour:
   m_ObjectHideFlags: 0

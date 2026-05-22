@@ -77,13 +77,15 @@ MonoBehaviour:
   speed: 500
   maxSpeed: 50
   hurtParticles: {fileID: 6461518344450522854}
-  <MaxHealth>k__BackingField: 25
+  <MaxHealth>k__BackingField: 20
   lookDirectionStartRight: 1
   flipTransform: {fileID: 7669902479120218043}
   cheatAlwaysSeekPlayer: 1
+  useAnimations: 0
   minBurstTime: 0.3
   maxBurstTime: 1
-  damage: 15
+  damage: 10
+  knockbackamount: 5
   torqueStrength: 50
 --- !u!1 &7669902479120218042
 GameObject:
