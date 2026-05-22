@@ -113,6 +113,7 @@ public class WeaponController : MonoBehaviour, IInputReceiver
     public void AddWeapon(Weapon weaponPrefab)
     {
         weapons.Add(weaponPrefab);
+        weaponPrefab.gameObject.SetActive(false);
         weaponPrefab.transform.SetParent(hand);
         weaponPrefab.transform.localPosition = Vector3.zero;
         weaponPrefab.transform.localRotation = Quaternion.identity;
