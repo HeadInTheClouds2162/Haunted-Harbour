@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &104836054 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7407095625082584216, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+  m_PrefabInstance: {fileID: 4463114178162315196}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c69fa18e8f9624e9ee058616c7fa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileWeapon
 --- !u!1001 &180113459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -758,8 +769,8 @@ MonoBehaviour:
   spawnRadius: 5
   minSpawnCount: 1
   maxSpawnCount: 3
-  minSpawnInterval: 0.1
-  maxSpawnInterval: 0.5
+  minSpawnInterval: 0
+  maxSpawnInterval: 0
   gizmoColor: {r: 1, g: 0, b: 0, a: 0.3}
 --- !u!4 &1408723481
 Transform:
@@ -1262,6 +1273,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.57786083
       objectReference: {fileID: 0}
+    - target: {fileID: 3327622150637409174, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064406521301302839, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 104836054}
     - target: {fileID: 5055054865147247818, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.69
@@ -1310,9 +1329,33 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.57786083
       objectReference: {fileID: 0}
+    - target: {fileID: 7153913435123556117, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7298358239320488402, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407095625082584216, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: recoil.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407095625082584216, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: recoil.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407095625082584216, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: cooldownTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407095625082584216, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: numProjectiles
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7407095625082584216, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
+      propertyPath: inaccuracyInDegrees
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7847776020391318793, guid: 119c6d2c86c42d04b8bedc4e99d216ac, type: 3}
       propertyPath: BoundingShape2D

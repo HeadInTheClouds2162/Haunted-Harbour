@@ -141,7 +141,7 @@ MonoBehaviour:
   cooldownTime: 0
   prefab: {fileID: 62797922894755691, guid: 5db7149a66525b445bda3f2d2bda0f3f, type: 3}
   firePoint: {fileID: 8041084135985486351}
-  numProjectiles: 10
+  numProjectiles: 1
   recoil: {x: 0, y: 0}
   inaccuracyInDegrees: 7.5
   audioSource: {fileID: 7251562086687099429}

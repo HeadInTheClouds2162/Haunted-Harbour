@@ -14,6 +14,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JennyScene.unity
     guid: 0f691f5918ba566409b96975738bb33f
+  - enabled: 1
+    path: Assets/Scenes/GabeScene.unity
+    guid: aa07bb6a9709dd9478605d63643b6ce2
+  - enabled: 1
+    path: Assets/Scenes/New JeremyScene.unity
+    guid: 62849ce105e4ba64b8d6240e7229c0d2
+  - enabled: 1
+    path: Assets/Scenes/PaleTrees.unity
+    guid: cb92c587ad03bf44e991342f38e293c1
+  - enabled: 1
+    path: Assets/Scenes/Toby LvL1.unity
+    guid: 5fc330ed22ac1544b99bc0d75f6c130c
+  - enabled: 1
+    path: Assets/Scenes/LillianScene.unity
+    guid: f537a37bcee7e27449651b1f628ea158
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
