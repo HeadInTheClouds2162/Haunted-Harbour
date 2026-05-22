@@ -14,6 +14,7 @@ public class JellyFish : Enemy
 
     protected override void Start()
     {
+        base.Start();
         _timer = Random.Range(minBurstTime, maxBurstTime);
     }
 

@@ -7,10 +7,10 @@ public class WeaponPickup : MonoBehaviour
     {
         WeaponPrefab = Instantiate(WeaponPrefab, transform);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.attachedRigidbody &&  other.attachedRigidbody.TryGetComponent(out WeaponController controller))
-        OnPickup(controller);
+         OnPickup(controller);
     }
 
     private void OnPickup(WeaponController controller)
