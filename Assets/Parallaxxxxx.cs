@@ -4,7 +4,7 @@ using UnityEngine;
 public class Parallaxxxxx : MonoBehaviour
 {
    [SerializeField] private Vector2 speed;
-   private Vector2 InitialStartPosition;
+   private Vector3 InitialStartPosition;
    private Vector3 InitialCameraPosition;
    private Camera cam;
    
@@ -22,8 +22,7 @@ public class Parallaxxxxx : MonoBehaviour
    private void LateUpdate()
    {
        Vector3 camDelta = cam.transform.position - InitialCameraPosition;
-       Vector3 normalized = camDelta.normalized;
-       Vector3 newPLocation = new Vector3(normalized.x * speed.x, normalized.y * speed.y);
+       Vector3 newPLocation = new Vector3(InitialStartPosition.x + camDelta.x * speed.x, InitialStartPosition.y + camDelta.y * speed.y);
        transform.position = newPLocation;
    }
    
