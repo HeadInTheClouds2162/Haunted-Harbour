@@ -77,7 +77,7 @@ MonoBehaviour:
   speed: 500
   maxSpeed: 50
   hurtParticles: {fileID: 6461518344450522854}
-  <MaxHealth>k__BackingField: 20
+  <MaxHealth>k__BackingField: 40
   lookDirectionStartRight: 1
   flipTransform: {fileID: 7669902479120218043}
   cheatAlwaysSeekPlayer: 1
