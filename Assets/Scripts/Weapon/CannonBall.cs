@@ -3,7 +3,6 @@ using UnityEngine;
 public class CannonBall : Projectile
 
 {
-    [SerializeField] private float knockbackamount = 5f;
     protected override void OnCollisionEnter2D(Collision2D other)
     {
         Rigidbody2D rb = other.rigidbody;
@@ -12,6 +11,8 @@ public class CannonBall : Projectile
         if (rb.TryGetComponent(out JellyFish jellyFish))
         {
             _rb.linearVelocity = Vector2.Reflect(_rb.linearVelocity, -col.normal);
+            jellyFish.TakeDamage(damage * _rb.linearVelocity.magnitude * 0.1f, col.normal, col.point, knockbackamount );
+
         }
         else if (rb.TryGetComponent(out IDamagable damagable))
         {
